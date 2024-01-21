@@ -18,8 +18,13 @@ public class FernWeaver : MonoBehaviour , IDamageable
 
     [SerializeField] protected int level = 0;
     [SerializeField] protected int experience;
-    [SerializeField] protected int experienceNeededForNextLevel; 
-    
+    [SerializeField] protected int experienceNeededForNextLevel;
+
+    private void Awake()
+    {
+        gameObject.layer = LayerMaskManager.turretlayerNameInt;
+    }
+
     public void StartNewGame()
     {
         //reset the values
@@ -49,12 +54,24 @@ public class FernWeaver : MonoBehaviour , IDamageable
         }
     }
 
+    public void IncreaseWater(int water)
+    {
+        waterResources += water;
+    }
+
     private void OnGUI()
     {
-        bool isButtonClicked = GUI.Button(new Rect(0, 0, 100, 100) , "take damage");
-        if(isButtonClicked)
+        bool TakeDamageButton = GUI.Button(new Rect(0, 0, 100, 100) , "take damage");
+        if(TakeDamageButton)
         {
             TakeDamage(100);
         }
+        bool increaseWaterButton = GUI.Button(new Rect(100, 0, 100, 100), "increase water");
+        if(increaseWaterButton)
+        {
+            IncreaseWater(10);
+        }
+
+
     }
 }

@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - turret
   - Water
   - UI
-  - 
-  - 
+  - enemy
+  - plant
   - 
   - 
   - 
