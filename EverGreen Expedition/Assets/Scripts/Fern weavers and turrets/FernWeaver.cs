@@ -19,6 +19,7 @@ public class FernWeaver : MonoBehaviour , IDamageable
     [SerializeField] protected int level = 0;
     [SerializeField] protected int experience;
     [SerializeField] protected int experienceNeededForNextLevel;
+    [SerializeField] protected Turret[] turrets;
 
     private void Awake()
     {
