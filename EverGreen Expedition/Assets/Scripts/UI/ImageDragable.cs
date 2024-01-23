@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
-    public class ImageDragable : Singleton<ImageDragable>  , IPointerUpHandler, IDragHandler
+    public class ImageDragable : Singleton<ImageDragable> , IDragHandler
     {
         [SerializeField] private Image imageComponent;
         [SerializeField] private Canvas canvas;
@@ -45,10 +45,6 @@ namespace Assets.Scripts.UI
             }
         }
 
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            //create the prefab here
-        }
 
         private Vector3 GetMousePositionInWorldSpace()
         {
