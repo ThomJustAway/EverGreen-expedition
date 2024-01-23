@@ -1,10 +1,13 @@
+using Assets.Scripts;
+using Assets.Scripts.UI;
 using Patterns;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class UIController : Singleton<UIController>
+public class UIController : Patterns.Singleton<UIController>
 {
     // Start is called before the first frame update
     [SerializeField]private TextMeshProUGUI playerWaterResourcesText;
@@ -14,9 +17,25 @@ public class UIController : Singleton<UIController>
     [SerializeField] private RectTransform healthBarRect;
     private float healthBarWidth;
 
+    [Header("Turrets")]
+    [SerializeField] private Transform turretContainer;
+    [SerializeField] private GameObject turretCardPrefab;
+
     private void Start()
     {
         healthBarWidth = healthBarRect.rect.width;
+        SetUpTurretCard();
+    }
+
+    private void SetUpTurretCard()
+    {
+        Turret[] playerTurrets = GameManager.Instance.playerStats.turrets;
+        foreach(var playerTurret in playerTurrets)
+        {
+            var card = Instantiate(turretCardPrefab , turretContainer);
+            //initialise the button
+            card.GetComponent<TurretButton>().Init(playerTurret);
+        }
     }
 
     public void UpdateUI(int maxHP, int currentHP , int maxLeafHandle , int currentLeafHandle , int currentWater)

@@ -102,7 +102,7 @@ MonoBehaviour:
   healthpoint: 100
   waterCost: 5
   leafHandleCost: 4
-  turretSprite: {fileID: 0}
+  turretSprite: {fileID: 21300000, guid: 71a335803f4b0d5418b52b9713308bd1, type: 3}
   projectileDamage: 30
   visibleRange: 10
   attackSpeedPerSecond: 3

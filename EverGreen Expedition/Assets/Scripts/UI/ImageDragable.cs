@@ -12,6 +12,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private Image imageComponent;
         [SerializeField] private Canvas canvas;
         private Turret assignTurret;
+        [SerializeField]private Transform turretContainer;
         private bool startMoving = false;
         public void OnDrag(PointerEventData eventData)
         {
@@ -25,10 +26,10 @@ namespace Assets.Scripts.UI
             gameObject.SetActive(startMoving);//now show the image 
         }
 
-        private void StopMoving()
+        protected override void Awake()
         {
-            startMoving = false;
-            gameObject.SetActive(startMoving);
+            base.Awake();
+            gameObject.SetActive(false); //do not show it at the player
         }
 
         private void Update()
@@ -39,7 +40,7 @@ namespace Assets.Scripts.UI
             }
 
             if(Input.GetMouseButtonDown(0))
-            {
+            {//place the turret down
                 StopMoving();
             }
         }
@@ -60,6 +61,18 @@ namespace Assets.Scripts.UI
             newPosition.x -= Screen.width / 2;
             newPosition.y -= Screen.height / 2;
             imageComponent.rectTransform.anchoredPosition = newPosition;
+        }
+        private void StopMoving()
+        {
+            startMoving = false;
+            gameObject.SetActive(startMoving);
+
+            //place the turret down
+            GameObject turret = Instantiate(assignTurret.gameObject , turretContainer);
+            Vector3 newPosition = GetMousePositionInWorldSpace();
+            newPosition.z = 0;
+            turret.transform.localPosition = newPosition;
+
         }
     }
 }
