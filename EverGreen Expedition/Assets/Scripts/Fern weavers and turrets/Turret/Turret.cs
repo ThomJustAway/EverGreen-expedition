@@ -24,12 +24,11 @@ namespace Assets.Scripts
         public virtual void TakeDamage(int amountOfDamage)
         {
             healthpoint -= amountOfDamage;
-            if(healthpoint <= 0 ) { healthpoint = 0; }
-            //do change this
-            Destroy(gameObject); 
+            if(healthpoint <= 0 ) { 
+                healthpoint = 0; 
+                FightingEventManager.Instance.RefundLeafHandle(leafHandleCost);
+                Destroy(gameObject); 
+            }
         }
-
-        
-
     }
 }

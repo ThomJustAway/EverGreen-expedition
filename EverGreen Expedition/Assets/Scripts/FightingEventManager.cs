@@ -47,10 +47,10 @@ namespace Assets.Scripts
         public void TakeDamage(int damage)
         {
             currentHP -= damage;
-            if(currentHP < 0)
+            if(currentHP <= 0)
             {
                 currentHP = 0;
-                //do something here!
+                EventManager.Instance.AlertListeners(TypeOfEvent.LoseEvent);
             }
         }
 
@@ -66,6 +66,15 @@ namespace Assets.Scripts
             else
             {
                 return false;
+            }
+        }
+
+        public void RefundLeafHandle(int leafHandle)
+        {
+            currentLeafHandle += leafHandle;
+            if(currentLeafHandle > maxLeafHandle)
+            {
+                currentLeafHandle = maxLeafHandle;
             }
         }
 

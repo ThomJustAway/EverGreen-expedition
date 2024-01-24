@@ -10,6 +10,11 @@ namespace Assets.Scripts
     {
         private Dictionary<TypeOfEvent, List<Action>> dictionaryOfEvents = new Dictionary<TypeOfEvent, List<Action>>();
 
+        private void Awake()
+        {
+            Init();
+        }
+
         private void Init()
         {
             foreach (var eventName in (TypeOfEvent[])Enum.GetValues(typeof(TypeOfEvent)))
@@ -53,6 +58,8 @@ namespace Assets.Scripts
     
     public enum TypeOfEvent
     {
-
+        WinEvent,
+        LoseEvent,
+        CryptidDeath
     }
 }

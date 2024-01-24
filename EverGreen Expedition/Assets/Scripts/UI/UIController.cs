@@ -21,10 +21,24 @@ public class UIController : Patterns.Singleton<UIController>
     [SerializeField] private Transform turretContainer;
     [SerializeField] private GameObject turretCardPrefab;
 
+
+    [Header("Enemies")]
+    [SerializeField] private TextMeshProUGUI AmountOfEnemiesText;
+    [SerializeField] private RectTransform waveProgress;
+    private float waveWidthWave;
+
+    [Header("win lose screen")]
+    [SerializeField] private GameObject winScreen;
+    [SerializeField] private GameObject loseScreen;
+
     private void Start()
     {
         healthBarWidth = healthBarRect.rect.width;
+        waveWidthWave = waveProgress.rect.width;
         SetUpTurretCard();
+
+        EventManager.Instance.AddListener(TypeOfEvent.WinEvent, ShowWinScreen);
+        EventManager.Instance.AddListener(TypeOfEvent.LoseEvent, ShowLoseScreen);
     }
 
     private void SetUpTurretCard()
@@ -66,4 +80,33 @@ public class UIController : Patterns.Singleton<UIController>
         playerWaterResourcesText.text = currentWater.ToString();
     }
 
+    #region enemies 
+    public void UpdateAmountOfEnemies(int amount)
+    {
+        AmountOfEnemiesText.text = amount.ToString();
+    }
+
+    public void UpdateWaveProgressBar(float progressPercentage) //from 0 to 1
+    {
+        float currentWidth = waveWidthWave * progressPercentage;
+        Vector2 sizeOfRect = waveProgress.sizeDelta;
+        sizeOfRect.x = currentWidth;
+        waveProgress.sizeDelta = sizeOfRect;
+    }
+    #endregion
+
+    #region win lose 
+    private void ShowWinScreen()
+    {
+        Time.timeScale = 0f; //stop the time
+        winScreen.SetActive(true);
+    }
+
+    private void ShowLoseScreen()
+    {
+        Time.timeScale = 0f; //stop the time
+        loseScreen.SetActive(true);
+    }
+
+    #endregion
 }

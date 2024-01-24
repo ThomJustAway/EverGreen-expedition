@@ -48,6 +48,7 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
         if(health < 0)
         {
             health = 0;
+            EventManager.Instance.AlertListeners(TypeOfEvent.CryptidDeath);
             Destroy(gameObject);
         }
     }
