@@ -10,6 +10,8 @@ namespace Assets.Scripts
     {
         private Dictionary<TypeOfEvent, List<Action>> dictionaryOfEvents = new Dictionary<TypeOfEvent, List<Action>>();
 
+        private List<Action<CryptidBehaviour>> cryptidDeathEvent;
+
         private void Awake()
         {
             Init();
@@ -21,6 +23,9 @@ namespace Assets.Scripts
             {//create a list for each event
                 dictionaryOfEvents.Add(eventName, new List<Action>());
             }
+
+            cryptidDeathEvent = new List<Action<CryptidBehaviour>>();
+
         }
 
         public void AddListener(TypeOfEvent eventName, Action callback)
@@ -48,18 +53,41 @@ namespace Assets.Scripts
             }
         }
 
-        //only call this if U think u need to reset the entire event manager
+        public void CryptidDeathAddListener(Action<CryptidBehaviour> callback)
+        {
+            //since list is a reference type, just reference the list and add the callback
+            cryptidDeathEvent.Add(callback);
+        }
+
+        public void CryptidDeathRemoveListener(Action<CryptidBehaviour> callback)
+        {
+            cryptidDeathEvent.Remove(callback); //remove the callback
+        }
+
+        public void CryptidDeathAlertListeners(CryptidBehaviour cryptid)
+        {
+            var copyList = new List<Action<CryptidBehaviour>>(cryptidDeathEvent);
+            foreach (var action in copyList)
+            {
+                action.Invoke(cryptid);
+            }
+        }
+
         public void ResetEventManager()
         {
             dictionaryOfEvents.Clear();
+            cryptidDeathEvent.Clear();
             Init();
         }
+
+
+
     }
     
     public enum TypeOfEvent
     {
         WinEvent,
         LoseEvent,
-        CryptidDeath
+        
     }
 }

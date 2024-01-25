@@ -31,6 +31,10 @@ public class UIController : Patterns.Singleton<UIController>
     [SerializeField] private GameObject winScreen;
     [SerializeField] private GameObject loseScreen;
 
+    [Header("Win screen UI")]
+    [SerializeField] private TextMeshProUGUI cryptidRemainGainText;
+    [SerializeField] private TextMeshProUGUI experienceGainText;
+
     private void Start()
     {
         healthBarWidth = healthBarRect.rect.width;
@@ -109,4 +113,10 @@ public class UIController : Patterns.Singleton<UIController>
     }
 
     #endregion
+
+    public void UpdateWinScreen(int experiencegain, int cryptidRemain)
+    {
+        experienceGainText.text = $"{experiencegain} <color=yellow>Exp";
+        cryptidRemainGainText.text = $"{cryptidRemain} <sprite=0>";
+    }
 }

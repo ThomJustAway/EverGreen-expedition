@@ -14,6 +14,19 @@ namespace Assets.Scripts
         private int maxHP;
         public int currentHP { get; private set; }
 
+        public int experienceGain { get; private set; }
+        public int cryptidRemainGain { get; private set; } 
+
+
+        private void Start()
+        {
+            StartNewGame();
+        }
+
+        private void Update()
+        {
+            UIController.Instance.UpdateUI(maxHP, currentHP, maxLeafHandle, currentLeafHandle, waterResources);
+        }
         public void StartNewGame()
         {
             //collect info from the game manager
@@ -27,16 +40,14 @@ namespace Assets.Scripts
             maxLeafHandle = stats.maxLeafHandle;
             //this can be changed if you want.
             waterResources = 0;
-        }
 
-        private void Start()
-        {
-            StartNewGame();
-        }
+            experienceGain = 0;
+            cryptidRemainGain = 0;
 
-        private void Update()
-        {
-            UIController.Instance.UpdateUI(maxHP, currentHP, maxLeafHandle, currentLeafHandle, waterResources);
+            EventManager.Instance.CryptidDeathAddListener(GainExpAndRemain);
+            EventManager.Instance.AddListener(TypeOfEvent.WinEvent, UpdateWinScreen);
+            EventManager.Instance.AddListener(TypeOfEvent.WinEvent, RemoveDependecy);
+            EventManager.Instance.AddListener(TypeOfEvent.LoseEvent, RemoveDependecy);
         }
 
         public void IncreaseWater(int water)
@@ -69,6 +80,32 @@ namespace Assets.Scripts
             }
         }
 
+        #region cryptid death experience
+        private void GainExpAndRemain(CryptidBehaviour enemy)
+        {
+            //gain the experience
+            cryptidRemainGain += Random.Range(enemy.CryptidRemainMin, enemy.CryptidRemainMax);
+            experienceGain += Random.Range(enemy.MinExp, enemy.MaxExp);
+        }
+        #endregion
+
+        #region win event action
+
+        private void UpdateWinScreen()
+        {
+            UIController.Instance.UpdateWinScreen(experienceGain, cryptidRemainGain);
+        }
+
+        private void RemoveDependecy()
+        {
+            EventManager.Instance.CryptidDeathRemoveListener(GainExpAndRemain);
+            EventManager.Instance.RemoveListener(TypeOfEvent.WinEvent, UpdateWinScreen);
+            EventManager.Instance.RemoveListener(TypeOfEvent.WinEvent , RemoveDependecy);
+            EventManager.Instance.RemoveListener(TypeOfEvent.LoseEvent, RemoveDependecy);
+
+        }
+
+        #endregion
         public void RefundLeafHandle(int leafHandle)
         {
             currentLeafHandle += leafHandle;

@@ -15,19 +15,15 @@ public class GameManager : SingletonDontDestroy<GameManager>
     private void Awake()
     {
         playerStats = new PlayerCurrentFernWeaverStats(
-            50, //max leaf handle
-            1000, //max hp
-            0,
-            0,
-            1000,
-            startingTurret,
-            playerSprite
-            );
+        50, //max leaf handle
+        1000, //max hp
+        0,
+        0,
+        1000,
+        startingTurret,
+        playerSprite
+        );
     }
-    
-    
-    //start new player
-
 }
 
 public struct PlayerCurrentFernWeaverStats

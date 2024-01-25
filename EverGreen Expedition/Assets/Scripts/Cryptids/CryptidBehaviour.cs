@@ -10,7 +10,22 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
 {
     [SerializeField] private int health = 100;
     [SerializeField] private int damage = 10;
+
+    [Header("Reward")]
+    [SerializeField] private int minExp = 10;
+    [SerializeField] private int maxExp = 20;
+
+    [SerializeField] private int cryptidRemainMin = 10;
+    [SerializeField] private int cryptidRemainMax = 10;
+
+    public int MinExp { get { return minExp; } }
+    public int MaxExp { get { return maxExp; } }
+    public int CryptidRemainMin { get { return cryptidRemainMin; } }
+    public int CryptidRemainMax { get { return cryptidRemainMax; } }
+
+
     public int Damage { get { return damage; } }
+    [Header("Attacks")]
 
     [SerializeField] private float attackSpeedPerSecond = 1;
     public float AttackSpeedPerSecond { get { return attackSpeedPerSecond; } }
@@ -48,8 +63,8 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
         if(health < 0)
         {
             health = 0;
-            EventManager.Instance.AlertListeners(TypeOfEvent.CryptidDeath);
-            Destroy(gameObject);
+            EventManager.Instance.CryptidDeathAlertListeners(this);
+            gameObject.SetActive(false);
         }
     }
 }

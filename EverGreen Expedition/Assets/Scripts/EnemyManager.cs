@@ -34,7 +34,7 @@ public class EnemyManager : MonoBehaviour
     {
         progress = 1f;
 
-        EventManager.Instance.AddListener(TypeOfEvent.CryptidDeath, CountEnemiesKilled);
+        EventManager.Instance.CryptidDeathAddListener(CountEnemiesKilled);
 
         SettingUpVariables();
         UpdateUI();
@@ -64,12 +64,11 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void CountEnemiesKilled()
+    private void CountEnemiesKilled(CryptidBehaviour cryptid)
     {
         enemiesKilled++;
         if(enemiesKilled == maxAmountOfEnemy)
         {
-            EventManager.Instance.RemoveListener(TypeOfEvent.CryptidDeath, CountEnemiesKilled);
             EventManager.Instance.AlertListeners(TypeOfEvent.WinEvent);
         }
     }
@@ -163,7 +162,10 @@ public class EnemyManager : MonoBehaviour
         var alert = alertObjectPool.Dequeue();
 
         alert.SetActive(true);
-        alert.transform.position = position;
+        alert.transform.localPosition = (Vector3)position;
+        
+        
+
         float spawnTiming = 10f;
         yield return new WaitForSeconds(spawnTiming);
 
