@@ -15,9 +15,13 @@ namespace Assets.Scripts
         public int currentHP { get; private set; }
 
         public int experienceGain { get; private set; }
-        public int cryptidRemainGain { get; private set; } 
+        public int cryptidRemainGain { get; private set; }
 
+        #region water
+        private int waterGainPerSecond;
+        [SerializeField] private int timeTakenToCollectWater;
 
+        #endregion
         private void Start()
         {
             StartNewGame();
@@ -44,10 +48,25 @@ namespace Assets.Scripts
             experienceGain = 0;
             cryptidRemainGain = 0;
 
+            waterGainPerSecond = stats.waterPerSecond;
+
+            StartCoroutine(GraduallyIncreaseWater());
+
             EventManager.Instance.CryptidDeathAddListener(GainExpAndRemain);
             EventManager.Instance.AddListener(TypeOfEvent.WinEvent, UpdateWinScreen);
             EventManager.Instance.AddListener(TypeOfEvent.WinEvent, RemoveDependecy);
             EventManager.Instance.AddListener(TypeOfEvent.LoseEvent, RemoveDependecy);
+        }
+
+        
+
+        private IEnumerator GraduallyIncreaseWater()
+        {
+            while (true)
+            {
+                IncreaseWater(waterGainPerSecond);
+                yield return new WaitForSeconds(timeTakenToCollectWater); 
+            }
         }
 
         public void IncreaseWater(int water)
@@ -113,6 +132,13 @@ namespace Assets.Scripts
             {
                 currentLeafHandle = maxLeafHandle;
             }
+        }
+
+        public void OnWinContinueClick()
+        {
+            GameManager.Instance.UpdateStatsOnWin(cryptidRemainGain, experienceGain);
+            //now update it on the game manager instance
+
         }
 
         private void OnGUI()

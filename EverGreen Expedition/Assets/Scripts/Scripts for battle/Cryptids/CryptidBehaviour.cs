@@ -64,7 +64,7 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
         {
             health = 0;
             EventManager.Instance.CryptidDeathAlertListeners(this);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

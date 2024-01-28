@@ -12,8 +12,9 @@ namespace Assets.Scripts
 
         private List<Action<CryptidBehaviour>> cryptidDeathEvent;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             Init();
         }
 
@@ -88,6 +89,6 @@ namespace Assets.Scripts
     {
         WinEvent,
         LoseEvent,
-        
+        ReloadUI
     }
 }

@@ -92,7 +92,7 @@ public class UIController : Patterns.Singleton<UIController>
 
     public void UpdateWaveProgressBar(float progressPercentage) //from 0 to 1
     {
-        float currentWidth = waveWidthWave * progressPercentage;
+        float currentWidth = waveWidthWave * ( 1 - progressPercentage);
         Vector2 sizeOfRect = waveProgress.sizeDelta;
         sizeOfRect.x = currentWidth;
         waveProgress.sizeDelta = sizeOfRect;
