@@ -111,7 +111,7 @@ public class LevelSystem : Singleton<LevelSystem>
 
         //set up the informationPanel
         int timeNeeded = adjacencyMatrix[GameManager.Instance.NodeIdCurrently, node.id];
-        timeText.text = $"Travel Time: <color=blue>{timeNeeded} Day";
+        timeText.text = $"Travel Time: <color=#B198EA>{timeNeeded} Day";
         levelTextName.text = NameBasedOnLevel(node.levelDetail);
 
         Travelbutton.onClick.RemoveAllListeners();
