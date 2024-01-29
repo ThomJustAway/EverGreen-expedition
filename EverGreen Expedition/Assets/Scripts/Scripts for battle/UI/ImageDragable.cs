@@ -22,7 +22,9 @@ namespace Assets.Scripts.UI
         public void StartShowingMovingImage(Turret turretAssign)
         {
             assignTurret = turretAssign;
+            imageComponent.sprite = turretAssign.TurretSprite;
             startMoving = true;
+
             gameObject.SetActive(startMoving);//now show the image 
         }
 

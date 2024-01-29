@@ -3,6 +3,7 @@ using Assets.Scripts.pattern;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonDontDestroy<GameManager>
 {
@@ -53,10 +54,17 @@ public class GameManager : SingletonDontDestroy<GameManager>
                 );
     }
 
-    public void TravelNode(int timeNeeded, int NodeTravelling)
+    public void TravelNode(int timeNeeded, LevelNode node)
     {
         time += timeNeeded; //add the amount of time need to travel
-        completedNode.Add( NodeTravelling ); //travel to this node
+        int NodeTravelling = node.id;
+        if(!completedNode.Contains(NodeTravelling)  //if the node not in the complete level add it in
+            && node.levelDetail != Level.TeleporterLevel //if it is a teleporter just ignore
+            )
+        {
+            completedNode.Add( NodeTravelling ); //travel to this node
+        }
+        
         NodeIdCurrently = NodeTravelling; //now the player is now at this node
     }
 
@@ -66,8 +74,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
         stats.cryptidRemain += crptidRemainGain;
         stats.experience += experienceGain;
         playerStats = stats;
-
-        print($"Stats cryptid remain: {playerStats.cryptidRemain} experience {playerStats.experience}");
+        SceneManager.LoadScene("Level Selection");
     }
 
     public void UpdateAdjacenyMatrix(int[,] matrix)

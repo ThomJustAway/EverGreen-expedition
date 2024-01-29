@@ -18,12 +18,19 @@ public class LevelSystem : Singleton<LevelSystem>
     // [will contain the number in time,]
 
     [SerializeField] private RectTransform canvasRectTransformForEnvironment;
+    public bool isTeleporterLevel { get; private set; } = false;
 
     #region information panel related
     [SerializeField] private RectTransform InformationPanel;
     [SerializeField] private Button Travelbutton;
     [SerializeField] private TextMeshProUGUI levelTextName;
     [SerializeField] private TextMeshProUGUI timeText;
+
+    //button
+    [SerializeField] private TextMeshProUGUI buttonText;
+    [SerializeField] private Image buttonImage;
+    private Color originalColor;
+
     #endregion
     protected override void Awake()
     {
@@ -33,11 +40,15 @@ public class LevelSystem : Singleton<LevelSystem>
 
     private void Start()
     {
+        originalColor = buttonImage.color;
         if (!GameManager.Instance.hasSetMatrix)
         {
             CreateAdjacenyMatrix();
         }
-        
+        else
+        {
+            adjacencyMatrix = GameManager.Instance.adjacencyMatrix;
+        }
     }
 
     private void SetUpId()
@@ -79,23 +90,80 @@ public class LevelSystem : Singleton<LevelSystem>
         print(row);    
     }
 
+    #region information panel related
     public void SpawnInformationPanel(LevelNode node)
+    {
+        SpawnPanelNearNode(node);
+
+        //set up the informationPanel
+        if (isTeleporterLevel)
+        {
+            levelTextName.text = NameBasedOnLevel(node.levelDetail);
+            Travelbutton.onClick.RemoveAllListeners();
+            timeText.text = "";
+            //alert player that they can teleport
+
+            ChangeButton(true);
+
+            //dont need any time at all
+            Travelbutton.onClick.RemoveAllListeners();
+            Travelbutton.onClick.AddListener(() =>
+            {
+                SetTeleporterBool(false);
+                ChangeButton();
+                TravelToNode(node, 0);
+            });
+        }
+        else
+        {
+            DoNormalTravelling(node);
+        }
+    }
+
+    private void ChangeButton(bool isTeleporter = false)
+    {
+        //change the color of the button
+        if(isTeleporter)
+        {
+            buttonText.text = "Teleport";
+            buttonImage.color = Color.blue;
+        }
+        else
+        {
+            buttonText.text = "Travel";
+            buttonImage.color = originalColor;
+        }
+    }
+
+    private void DoNormalTravelling(LevelNode node)
+    {
+        int timeNeeded = adjacencyMatrix[GameManager.Instance.NodeIdCurrently, node.id];
+        timeText.text = $"Travel Time: <color=#B198EA>{timeNeeded} Day";
+        levelTextName.text = NameBasedOnLevel(node.levelDetail);
+
+        Travelbutton.onClick.RemoveAllListeners();
+
+        //change thing here
+        Travelbutton.onClick.AddListener(() => { TravelToNode(node, timeNeeded); });
+    }
+
+    private void SpawnPanelNearNode(LevelNode node)
     {
         //will try to put it at the left
         InformationPanel.gameObject.SetActive(true);
         //calculate the total length of the panel
-        var widthOfPanel = InformationPanel.rect.width * InformationPanel.localScale.x ;
+        var widthOfPanel = InformationPanel.rect.width * InformationPanel.localScale.x;
 
         //then get the same thing for the node and get the length of the width
         var nodeRect = node.transform.GetComponent<RectTransform>();
-        var widthOfNode = nodeRect.rect.width * nodeRect.localScale.x ;
+        var widthOfNode = nodeRect.rect.width * nodeRect.localScale.x;
 
 
         //find if the the information panel can fit through the entire screen
         float widthOfTheWholeThing = nodeRect.anchoredPosition.x + widthOfPanel + widthOfNode / 2;
-        
+
         //if it can fit the entire right side of the screen, then find the anchor position of the rect transform
-        if (widthOfTheWholeThing > canvasRectTransformForEnvironment.rect.width/2)
+        if (widthOfTheWholeThing > canvasRectTransformForEnvironment.rect.width / 2)
         {//cant do it at the left
             Vector2 newPosition = nodeRect.anchoredPosition;
             newPosition.x -= widthOfNode / 2 + widthOfPanel / 2;
@@ -104,18 +172,9 @@ public class LevelSystem : Singleton<LevelSystem>
         else
         {//reverse and place the rect transform on the left.
             Vector2 newPosition = nodeRect.anchoredPosition;
-            newPosition.x += widthOfNode/2 + widthOfPanel/2;
+            newPosition.x += widthOfNode / 2 + widthOfPanel / 2;
             InformationPanel.anchoredPosition = newPosition;
         }
-
-
-        //set up the informationPanel
-        int timeNeeded = adjacencyMatrix[GameManager.Instance.NodeIdCurrently, node.id];
-        timeText.text = $"Travel Time: <color=#B198EA>{timeNeeded} Day";
-        levelTextName.text = NameBasedOnLevel(node.levelDetail);
-
-        Travelbutton.onClick.RemoveAllListeners();
-        Travelbutton.onClick.AddListener(() => { TravelToNode(node, timeNeeded); });
     }
 
     private string NameBasedOnLevel(Level level)
@@ -138,7 +197,7 @@ public class LevelSystem : Singleton<LevelSystem>
     private void TravelToNode(LevelNode node , int time)
     {
         //inform the game manager that the player is moving
-        GameManager.Instance.TravelNode(time, node.id);
+        GameManager.Instance.TravelNode(time, node);
 
         switch (node.levelDetail)
         {
@@ -161,10 +220,15 @@ public class LevelSystem : Singleton<LevelSystem>
                 Debug.LogError("Node cant be traveled");
                 break;
         }
+
+        InformationPanel.gameObject.SetActive(false);
+
     }
 
+    #endregion
+
     #region travel node function
-    
+
     private void TravelNormalEnemyLevel()
     {
         SceneManager.LoadScene("Battle scene");
@@ -183,7 +247,10 @@ public class LevelSystem : Singleton<LevelSystem>
 
     private void TravelTeleporterLevel()
     {
-        //go to travel teleporter
+        SetTeleporterBool(true);
+        //show pop up
+        EventManager.Instance.AlertListeners(TypeOfEvent.ReloadUI);
+
     }
 
     private void TravelBossLevel()
@@ -193,6 +260,13 @@ public class LevelSystem : Singleton<LevelSystem>
 
     #endregion
 
+    #region safe function
+
+    private void SetTeleporterBool(bool value)
+    {
+        isTeleporterLevel = value;  
+    }
+    #endregion
 }
 
 

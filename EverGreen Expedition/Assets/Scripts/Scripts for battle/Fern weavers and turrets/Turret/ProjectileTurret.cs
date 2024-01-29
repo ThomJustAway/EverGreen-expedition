@@ -20,7 +20,6 @@ namespace Assets.Scripts.Fern_weavers_and_turrets
 
         private Queue<Bullet> bulletPool;
 
-
         private void Start()
         {
             bulletPool = new Queue<Bullet>();

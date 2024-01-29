@@ -44,7 +44,7 @@ namespace Assets.Scripts.Scripts_for_level_selection
                     text += "<color=orange>Medium";
                     break;
                 case TimeDifficulty.Easy:
-                    text += "<color=blue>Easy";
+                    text += "<color=#56B847>Easy";
                     break;
             }
             difficultyText.text = text;

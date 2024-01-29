@@ -88,7 +88,8 @@ public class LevelNode : MonoBehaviour ,IPointerDownHandler
     {
         //ignore if the node is the same as the player node
         if (GameManager.Instance.NodeIdCurrently != id 
-            && IsConnectedToPlayerNode())
+            && IsConnectedToPlayerNode() 
+            || LevelSystem.Instance.isTeleporterLevel)
         {//check the adjaceny array to see if it is a node that can be click
             LevelSystem.Instance.SpawnInformationPanel(this);
         }
