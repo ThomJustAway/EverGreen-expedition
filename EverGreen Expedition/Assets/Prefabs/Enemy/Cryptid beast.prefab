@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 10
+  damage: 50
   minExp: 10
   maxExp: 20
   cryptidRemainMin: 10

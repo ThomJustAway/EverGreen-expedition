@@ -33,6 +33,8 @@ namespace Assets.Scripts
         }
         public void StartNewGame()
         {
+            SoundManager.Instance.PlayAmbientClip(AmbientClip.FightingAmbient);
+
             //collect info from the game manager
             var stats = GameManager.Instance.playerStats;
 

@@ -7,12 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonDontDestroy<GameManager>
 {
-    #region fighting
-    [Header("This is for experimenting, make sure to change them")]
-    [SerializeField] private Turret[] startingTurret;
-    [SerializeField] private Sprite playerSprite;
+
     public PlayerCurrentFernWeaverStats playerStats { get; private set; }
-    #endregion
 
     #region level selection
     public int time { get; private set; }
@@ -27,7 +23,6 @@ public class GameManager : SingletonDontDestroy<GameManager>
     {
         base.Awake();
         //change this later
-        InitPlayerStats();
         SetUpLevel();
     }
 
@@ -39,20 +34,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
         time = 0; //start with zero days
     }
 
-    private void InitPlayerStats()
-    {
-        playerStats = new PlayerCurrentFernWeaverStats(
-                50, //max leaf handle
-                1000, //max hp
-                0,
-                0,
-                1000,
-                2,
-                0,
-                startingTurret,
-                playerSprite
-                );
-    }
+    //try out
 
     public void TravelNode(int timeNeeded, LevelNode node)
     {
@@ -82,49 +64,10 @@ public class GameManager : SingletonDontDestroy<GameManager>
         hasSetMatrix = true;
         adjacencyMatrix = matrix;
     }
-}
 
-public struct PlayerCurrentFernWeaverStats
-{
-    //leaf handle
-    public int maxLeafHandle;
-
-    //max Health
-    public int maxHP;
-
-    //player current level
-    public int level;
-    public int experience;
-    public int experienceNeededForNextLevel;
-    //turrets the player has
-    public Turret[] turrets;
-    public Sprite fernWeaverSprite;
-    public int waterPerSecond;
-
-    public int cryptidRemain;
-
-    public PlayerCurrentFernWeaverStats(
-        int maxLeafHandle,
-        int maxHp,
-        int level,
-        int experience,
-        int experienceNeededForNextLevel,
-        int waterPerSecond,
-        int cryptidRemain,
-        Turret[] turrets,
-        Sprite fernWeaverSprite
-        )
+    public void SetPlayerState(PlayerCurrentFernWeaverStats stats)
     {
-        this.maxLeafHandle = maxLeafHandle;
-        maxHP = maxHp;
-        this.level = level;
-        this.experience = experience;
-        this.experienceNeededForNextLevel = experienceNeededForNextLevel;
-        this.turrets = turrets; 
-        this.fernWeaverSprite = fernWeaverSprite;
-        this.waterPerSecond = waterPerSecond;
-        this.cryptidRemain = cryptidRemain;
+        playerStats = stats;
     }
-
 }
 

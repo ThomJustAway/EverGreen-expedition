@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public  class Turret : MonoBehaviour , IDamageable
+    public  class Turret : MonoBehaviour , IDamageable 
     {
         [SerializeField] protected string turretName;
         public string TurretName { get { return turretName; } }
@@ -29,6 +29,12 @@ namespace Assets.Scripts
                 FightingEventManager.Instance.RefundLeafHandle(leafHandleCost);
                 Destroy(gameObject); 
             }
+        }
+
+        public void RemoveTurret()
+        {//remove the turret
+            FightingEventManager.Instance.RefundLeafHandle(leafHandleCost);
+            Destroy(gameObject);
         }
     }
 }

@@ -1,5 +1,6 @@
 
 using Assets.Scripts;
+using Assets.Scripts.Scripts_for_level_selection;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -26,14 +27,15 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]private int startingPoolNumber;
 
     [Header("Enemies")]
-    [SerializeField] private int amountOfEnemiesToSpawn;
+    private int amountOfEnemiesToSpawn;
     private int enemiesKilled;
     private int maxAmountOfEnemy;
     private float progress;
+    [SerializeField] private int numberLimitToBurst;
     private void Start()
     {
         progress = 1f;
-
+        DecideOnNumberOfEnemy();
         EventManager.Instance.CryptidDeathAddListener(CountEnemiesKilled);
 
         SettingUpVariables();
@@ -46,6 +48,23 @@ public class EnemyManager : MonoBehaviour
         UpdateUI();
     }
 
+    private void DecideOnNumberOfEnemy()
+    {
+        int timePassed = GameManager.Instance.time;
+        if ( timePassed >= (int)TimeDifficulty.Hard)
+        {
+            amountOfEnemiesToSpawn = 50 + 5 * ( timePassed - (int)TimeDifficulty.Hard );
+        }
+        else if(timePassed>= (int)TimeDifficulty.Medium) 
+        {
+            amountOfEnemiesToSpawn = 25 + 3 * (timePassed - (int)TimeDifficulty.Medium);
+        }
+        else
+        {
+            amountOfEnemiesToSpawn = 15 + timePassed;
+        }
+    }
+
     #region Coroutine
 
 
@@ -53,15 +72,61 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator StartEnemySpawning()
     {
         maxAmountOfEnemy = amountOfEnemiesToSpawn;
+        bool doBurst = false;
         while(progress > 0f)
         {
-            amountOfEnemiesToSpawn -= 1;
-            progress = (float)amountOfEnemiesToSpawn / (float)maxAmountOfEnemy;
-            SpawnEnemy();
+            doBurst = DecidingIfCanBurst();
 
-            float randomSpawnTime = Random.Range(3.0f, 10.0f);
-            yield return new WaitForSeconds(randomSpawnTime);
+            if (doBurst)
+            {
+                int numberToBurst = Random.Range(2, numberLimitToBurst);
+                amountOfEnemiesToSpawn -= numberToBurst;
+                print(amountOfEnemiesToSpawn);
+                progress = (float)amountOfEnemiesToSpawn / (float)maxAmountOfEnemy;
+                for(int i = 0; i < numberToBurst; i++)
+                {
+                    SpawnEnemy();
+                }
+
+                float nextWaveTiming = Random.Range(3.0f, 5.0f);
+                yield return new WaitForSeconds(nextWaveTiming);
+
+            }
+            else
+            {
+                amountOfEnemiesToSpawn -= 1;
+                progress = (float)amountOfEnemiesToSpawn / (float)maxAmountOfEnemy;
+                //deciding on burst
+
+                SpawnEnemy();
+
+                float nextWaveTiming = Random.Range(3.0f, 5.0f);
+                yield return new WaitForSeconds(nextWaveTiming);
+            }
         }
+    }
+
+    private bool DecidingIfCanBurst()
+    {
+        bool doBurst;
+        if (amountOfEnemiesToSpawn > numberLimitToBurst)
+        {
+            float randomNumber = Random.value;
+            if (randomNumber <= 0.3)
+            {
+                doBurst = true;
+            }
+            else
+            {
+                doBurst = false;
+            }
+        }
+        else
+        {
+            doBurst = false;
+        }
+
+        return doBurst;
     }
 
     private void CountEnemiesKilled(CryptidBehaviour cryptid)
@@ -183,14 +248,14 @@ public class EnemyManager : MonoBehaviour
         return Random.value > 0.5f;
     }
 
-    private void OnGUI()
-    {
-        bool spawnenemy = GUI.Button(new Rect(0, 200, 100, 100), "Spawn enemy");
-        if (spawnenemy)
-        {
-            SpawnEnemy();
-        }
-    }
+    //private void OnGUI()
+    //{
+    //    bool spawnenemy = GUI.Button(new Rect(0, 200, 100, 100), "Spawn enemy");
+    //    if (spawnenemy)
+    //    {
+    //        SpawnEnemy();
+    //    }
+    //}
     #endregion
 
 }
