@@ -103,6 +103,7 @@ MonoBehaviour:
   waterCost: 5
   leafHandleCost: 1
   turretSprite: {fileID: 21300000, guid: 60f5600ba7550164fb4a1e4c36893009, type: 3}
+  detail: Help you collect water if you need.
   waterGain: 4
   minAmountOfSecondToGatherWater: 3
   maxAmountOfSecondToGatherWater: 5

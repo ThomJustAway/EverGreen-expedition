@@ -1,19 +1,46 @@
+using Assets.Scripts.Data_manager;
 using Assets.Scripts.pattern;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : SingletonDontDestroy<SoundManager>
 {
     [SerializeField] private List<MusicClip> musicClips;
     [SerializeField] private List<AmbientMusicClip> ambientClips;
+
+    private AmbientClip currentAmbientClip;
     private AudioSource ambientAudioSource;
+
+    private 
+
     void Start()
     {
         InitMusicClip();
         InitAmbientClip();
         ambientAudioSource.loop = true;
         PlayAmbientClip(AmbientClip.LevelAmbient);
+    }
+
+
+    private void Update()
+    {
+        
+    }
+
+    private void CheckScene()
+    {
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName(SceneName.BattleScene)
+            && currentAmbientClip != AmbientClip.FightingAmbient
+            )
+        {
+            PlayAmbientClip(AmbientClip.FightingAmbient);
+        }
+        else if(currentAmbientClip == AmbientClip.FightingAmbient)
+        {
+            PlayAmbientClip(AmbientClip.LevelAmbient);
+        }
     }
 
     private void InitMusicClip()
@@ -64,6 +91,7 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
 
     private IEnumerator WindUpMusic(AmbientMusicClip clip , float time)
     {
+        currentAmbientClip = clip.ambientSFX;
         ambientAudioSource.clip = clip.clip;
         ambientAudioSource.Play();
         ambientAudioSource.volume = 0;

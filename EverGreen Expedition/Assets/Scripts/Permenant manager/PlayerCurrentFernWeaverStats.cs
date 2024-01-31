@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -18,7 +19,7 @@ public struct PlayerCurrentFernWeaverStats
     public int experience;
     public int experienceNeededForNextLevel;
     //turrets the player has
-    public Turret[] turrets;
+    public List<Turret> turrets;
     public Sprite fernWeaverSprite;
     public int waterPerSecond;
     public int cryptidRemain;
@@ -32,7 +33,7 @@ public struct PlayerCurrentFernWeaverStats
         int experienceNeededForNextLevel,
         int waterPerSecond,
         int cryptidRemain,
-        Turret[] turrets,
+        List<Turret> turrets,
         Sprite fernWeaverSprite
         )
     {

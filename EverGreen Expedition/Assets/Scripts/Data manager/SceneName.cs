@@ -10,5 +10,6 @@ namespace Assets.Scripts.Data_manager
         public static string CreateCharacterLevel { get { return "Create Character Scene"; } }
         public static string BattleScene { get { return "Battle scene"; } }
 
+        public static string AddTowerScene { get { return "Add Dna Scene"; } }
     }
 }

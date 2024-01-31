@@ -47,7 +47,7 @@ public class UIController : Patterns.Singleton<UIController>
 
     private void SetUpTurretCard()
     {
-        Turret[] playerTurrets = GameManager.Instance.playerStats.turrets;
+        var playerTurrets = GameManager.Instance.playerStats.turrets;
         foreach(var playerTurret in playerTurrets)
         {
             var card = Instantiate(turretCardPrefab , turretContainer);

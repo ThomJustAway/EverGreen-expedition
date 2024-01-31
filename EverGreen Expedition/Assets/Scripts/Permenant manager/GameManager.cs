@@ -34,7 +34,10 @@ public class GameManager : SingletonDontDestroy<GameManager>
         time = 0; //start with zero days
     }
 
-    //try out
+    public void AddTurret(Turret turret)
+    {
+        playerStats.turrets.Add(turret);
+    }
 
     public void TravelNode(int timeNeeded, LevelNode node)
     {

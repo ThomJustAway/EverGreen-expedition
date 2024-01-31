@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Battle scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Create Character Scene.unity
+    path: Assets/Scenes/Add Dna Scene.unity
     guid: 4c59544e23926d0418c56facb6af4e15
+  - enabled: 1
+    path: Assets/Scenes/Create Character Scene.unity
+    guid: 1ac0dc1a71dfd0c409c90fb3625b70da
   m_configObjects: {}

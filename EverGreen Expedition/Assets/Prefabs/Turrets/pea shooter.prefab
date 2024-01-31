@@ -103,6 +103,7 @@ MonoBehaviour:
   waterCost: 5
   leafHandleCost: 4
   turretSprite: {fileID: 21300000, guid: 71a335803f4b0d5418b52b9713308bd1, type: 3}
+  detail: A normal projectile plant
   projectileDamage: 21
   visibleRange: 10
   attackSpeedPerSecond: 3

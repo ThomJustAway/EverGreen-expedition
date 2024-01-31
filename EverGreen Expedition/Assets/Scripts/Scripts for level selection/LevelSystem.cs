@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using Assets.Scripts.Data_manager;
 using Patterns;
 using System;
 using System.Collections;
@@ -231,7 +232,7 @@ public class LevelSystem : Singleton<LevelSystem>
 
     private void TravelNormalEnemyLevel()
     {
-        SceneManager.LoadScene("Battle scene");
+        SceneManager.LoadScene(SceneName.BattleScene);
 
     }
 
@@ -242,7 +243,8 @@ public class LevelSystem : Singleton<LevelSystem>
 
     private void TravelAddPlantLevel()
     {
-        //Show add plant level
+        SceneManager.LoadScene(SceneName.AddTowerScene);
+
     }
 
     private void TravelTeleporterLevel()
@@ -250,7 +252,6 @@ public class LevelSystem : Singleton<LevelSystem>
         SetTeleporterBool(true);
         //show pop up
         EventManager.Instance.AlertListeners(TypeOfEvent.ReloadUI);
-
     }
 
     private void TravelBossLevel()
