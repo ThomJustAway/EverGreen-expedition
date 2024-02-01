@@ -29,9 +29,14 @@ public class GameManager : SingletonDontDestroy<GameManager>
     private void SetUpLevel()
     {
         completedNode = new List<int>();
+        MoveToStartingPosition();
+        time = 0; //start with zero days
+    }
+
+    private void MoveToStartingPosition()
+    {
         completedNode.Add(0);
         NodeIdCurrently = 0;
-        time = 0; //start with zero days
     }
 
     public void AddTurret(Turret turret)
@@ -55,6 +60,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
 
     public void UpdateStatsOnWin(int crptidRemainGain, int experienceGain)
     {
+        Time.timeScale = 1f; //make sure the time resumes
         var stats = playerStats;
         stats.cryptidRemain += crptidRemainGain;
         stats.experience += experienceGain;
@@ -66,6 +72,12 @@ public class GameManager : SingletonDontDestroy<GameManager>
     {
         hasSetMatrix = true;
         adjacencyMatrix = matrix;
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SetUpLevel();
     }
 
     public void SetPlayerState(PlayerCurrentFernWeaverStats stats)

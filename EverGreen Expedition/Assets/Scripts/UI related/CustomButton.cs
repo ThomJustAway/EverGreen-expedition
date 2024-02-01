@@ -12,7 +12,7 @@ namespace Assets.Scripts
     {
         [SerializeField] private SFXClip clipToPlayWhenClick;
         [SerializeField] private SFXClip clipToPlayWhenHovered;
-        [SerializeField] private UnityEvent actions;
+        public UnityEvent actions;
         //when the player hover on the button, play the hover clip
         public void OnPointerEnter(PointerEventData eventData)
         {

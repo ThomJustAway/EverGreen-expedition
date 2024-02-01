@@ -81,7 +81,6 @@ public class EnemyManager : MonoBehaviour
             {
                 int numberToBurst = Random.Range(2, numberLimitToBurst);
                 amountOfEnemiesToSpawn -= numberToBurst;
-                print(amountOfEnemiesToSpawn);
                 progress = (float)amountOfEnemiesToSpawn / (float)maxAmountOfEnemy;
                 for(int i = 0; i < numberToBurst; i++)
                 {

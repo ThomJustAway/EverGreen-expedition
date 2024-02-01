@@ -122,7 +122,6 @@ namespace Assets.Scripts
             EventManager.Instance.RemoveListener(TypeOfEvent.WinEvent, UpdateWinScreen);
             EventManager.Instance.RemoveListener(TypeOfEvent.WinEvent , RemoveDependecy);
             EventManager.Instance.RemoveListener(TypeOfEvent.LoseEvent, RemoveDependecy);
-
         }
 
         #endregion
@@ -138,8 +137,7 @@ namespace Assets.Scripts
         public void OnWinContinueClick()
         {
             GameManager.Instance.UpdateStatsOnWin(cryptidRemainGain, experienceGain);
-            //now update it on the game manager instance
-
+            
         }
 
         private void OnGUI()

@@ -23,7 +23,7 @@ public class LevelSystem : Singleton<LevelSystem>
 
     #region information panel related
     [SerializeField] private RectTransform InformationPanel;
-    [SerializeField] private Button Travelbutton;
+    [SerializeField] private CustomButton Travelbutton;
     [SerializeField] private TextMeshProUGUI levelTextName;
     [SerializeField] private TextMeshProUGUI timeText;
 
@@ -88,7 +88,6 @@ public class LevelSystem : Singleton<LevelSystem>
             }
             row += "\n";
         }
-        print(row);    
     }
 
     #region information panel related
@@ -100,15 +99,15 @@ public class LevelSystem : Singleton<LevelSystem>
         if (isTeleporterLevel)
         {
             levelTextName.text = NameBasedOnLevel(node.levelDetail);
-            Travelbutton.onClick.RemoveAllListeners();
+            Travelbutton.actions.RemoveAllListeners();
             timeText.text = "";
             //alert player that they can teleport
 
             ChangeButton(true);
 
             //dont need any time at all
-            Travelbutton.onClick.RemoveAllListeners();
-            Travelbutton.onClick.AddListener(() =>
+            Travelbutton.actions.RemoveAllListeners();
+            Travelbutton.actions.AddListener(() =>
             {
                 SetTeleporterBool(false);
                 ChangeButton();
@@ -142,10 +141,10 @@ public class LevelSystem : Singleton<LevelSystem>
         timeText.text = $"Travel Time: <color=#B198EA>{timeNeeded} Day";
         levelTextName.text = NameBasedOnLevel(node.levelDetail);
 
-        Travelbutton.onClick.RemoveAllListeners();
+        Travelbutton.actions.RemoveAllListeners();
 
         //change thing here
-        Travelbutton.onClick.AddListener(() => { TravelToNode(node, timeNeeded); });
+        Travelbutton.actions.AddListener(() => { TravelToNode(node, timeNeeded); });
     }
 
     private void SpawnPanelNearNode(LevelNode node)

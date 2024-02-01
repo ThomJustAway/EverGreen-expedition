@@ -10,12 +10,10 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
     [SerializeField] private List<MusicClip> musicClips;
     [SerializeField] private List<AmbientMusicClip> ambientClips;
 
-    private AmbientClip currentAmbientClip;
+    [SerializeField]private AmbientClip currentAmbientClip;
     private AudioSource ambientAudioSource;
 
-    private 
-
-    void Start()
+    private  void Start()
     {
         InitMusicClip();
         InitAmbientClip();
@@ -26,7 +24,7 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
 
     private void Update()
     {
-        
+        CheckScene();
     }
 
     private void CheckScene()
@@ -37,7 +35,9 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
         {
             PlayAmbientClip(AmbientClip.FightingAmbient);
         }
-        else if(currentAmbientClip == AmbientClip.FightingAmbient)
+        else if(
+            SceneManager.GetActiveScene() != SceneManager.GetSceneByName(SceneName.BattleScene) &&
+            currentAmbientClip == AmbientClip.FightingAmbient)
         {
             PlayAmbientClip(AmbientClip.LevelAmbient);
         }
@@ -75,6 +75,7 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
             //find the sfx clip that is related to the clip that is require to play
             if (ambientClip.ambientSFX == clip)
             {
+                currentAmbientClip = clip;
                 if(ambientAudioSource.clip == null) //if there is nothing in the clip
                 {
                     StartCoroutine(WindUpMusic(ambientClip, 4f));
@@ -91,12 +92,15 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
 
     private IEnumerator WindUpMusic(AmbientMusicClip clip , float time)
     {
+        print($"Start to wind up {clip.ambientSFX}");
+
         currentAmbientClip = clip.ambientSFX;
         ambientAudioSource.clip = clip.clip;
         ambientAudioSource.Play();
         ambientAudioSource.volume = 0;
         ambientAudioSource.pitch = clip.pitch;
         float elpseTime = 0;
+
         while (elpseTime < time)
         {
             float percentage = elpseTime / time;
@@ -106,7 +110,6 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
         }
 
         ambientAudioSource.volume = clip.volume;
-
     }
 
     private IEnumerator WindDownMusic(AmbientMusicClip Nexclip , float time )
