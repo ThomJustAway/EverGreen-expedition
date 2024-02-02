@@ -140,21 +140,21 @@ namespace Assets.Scripts
             
         }
 
-        private void OnGUI()
-        {
-            bool TakeDamageButton = GUI.Button(new Rect(0, 0, 100, 100), "take damage");
-            if (TakeDamageButton)
-            {
-                TakeDamage(100);
-            }
-            bool increaseWaterButton = GUI.Button(new Rect(100, 0, 100, 100), "increase water");
-            if (increaseWaterButton)
-            {
-                IncreaseWater(10);
-            }
+        //private void OnGUI()
+        //{
+        //    bool TakeDamageButton = GUI.Button(new Rect(0, 0, 100, 100), "take damage");
+        //    if (TakeDamageButton)
+        //    {
+        //        TakeDamage(100);
+        //    }
+        //    bool increaseWaterButton = GUI.Button(new Rect(100, 0, 100, 100), "increase water");
+        //    if (increaseWaterButton)
+        //    {
+        //        IncreaseWater(10);
+        //    }
 
 
-        }
+        //}
 
     }
 }

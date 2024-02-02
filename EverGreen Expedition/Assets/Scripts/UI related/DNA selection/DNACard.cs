@@ -24,7 +24,7 @@ namespace Assets.Scripts.UI_related.DNA_selection
             assignTurret = turret;
 
             turretImage.sprite = turret.TurretSprite;
-            turretNameText.name = turret.name;
+            turretNameText.text = turret.name;
             healthText.text = $"<color=#F46969>{turret.HealthPoint}<sprite=0>";
             leafHandleText.text = $"<color=#C3D349><b>{turret.LeafHandleCost}<sprite=0>";
             waterHandleText.text = $"<color=#1BC6FF><b>{turret.WaterCost}<sprite=0>";

@@ -16,8 +16,12 @@ public class GameManager : SingletonDontDestroy<GameManager>
     public bool hasSetMatrix { get; private set; }
     public int[,] adjacencyMatrix { get; private set; }
     public List<int> completedNode { get; private set; }
-    #endregion
+    #endregion'
 
+    #region tutorial
+    public bool HasStartedTutorial { get; private set; } = false;
+    public bool HasStartedBattleTutorial { get; private set; } = false;
+    #endregion
     //for fighting
     protected override void Awake()
     {
@@ -83,6 +87,16 @@ public class GameManager : SingletonDontDestroy<GameManager>
     public void SetPlayerState(PlayerCurrentFernWeaverStats stats)
     {
         playerStats = stats;
+    }
+
+    public void HasPlayedTutorial()
+    {
+        HasStartedTutorial = true;
+    }
+
+    public void HasPlayedBattleTutorial()
+    {
+        HasStartedBattleTutorial = true;
     }
 }
 
