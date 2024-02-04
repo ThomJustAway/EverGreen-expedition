@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class FernWeaver : MonoBehaviour , IDamageable
 {
+    [SerializeField] private bool isInvincible;
     private void Awake()
     {
         gameObject.layer = LayerMaskManager.turretlayerNameInt;
@@ -13,6 +14,9 @@ public class FernWeaver : MonoBehaviour , IDamageable
 
     public void TakeDamage(int amountOfDamage)
     {
-        FightingEventManager.Instance.TakeDamage(amountOfDamage);
+        if(!isInvincible)
+        {
+            FightingEventManager.Instance.TakeDamage(amountOfDamage);
+        }
     }
 }

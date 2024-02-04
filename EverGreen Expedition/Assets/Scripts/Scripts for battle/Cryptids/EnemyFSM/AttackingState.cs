@@ -49,6 +49,7 @@ namespace Assets.Scripts.EnemyFSM
             }
             else
             {
+                cryptidBehaviour.PlayAttackSoundEffect();
                 var componentToHit = hit.transform.GetComponent<IDamageable>();
                 componentToHit.TakeDamage(cryptidBehaviour.Damage);
             }

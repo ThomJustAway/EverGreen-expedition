@@ -96,6 +96,8 @@ namespace Assets.Scripts
             }
             else
             {
+                string message = $"You dont have enough resources!";
+                PopUp.Instance.ShowMessage(message, 4);
                 return false;
             }
         }

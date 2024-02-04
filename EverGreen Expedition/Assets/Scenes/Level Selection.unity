@@ -1193,8 +1193,8 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: c8b345d511076bf4a8b77c6870e2e7f9, type: 3}
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[0].message
-      value: You are current a solider (called a <b>Fern Weaver</b>) that need to
-        explore the barren lands.
+      value: You are currently a solider (called a <b>Fern Weaver</b>) that needs
+        to explore the barren lands.
       objectReference: {fileID: 0}
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[1].message
@@ -2051,7 +2051,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
   m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 1
   m_HorizontalScrollbarSpacing: 0
   m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:

@@ -70,6 +70,11 @@ public class TutorialBehaviour : MonoBehaviour
         }
     }
 
+    public void OnCloseTutorial()
+    {
+        Time.timeScale = 1f;
+        tutorialPanel.SetActive(false );
+    }
 }
 
 [Serializable]

@@ -1,5 +1,6 @@
 ﻿public enum SFXClip
 {
+    None,
     buttonClick,
     buttonClick2,
     HoverSFX,

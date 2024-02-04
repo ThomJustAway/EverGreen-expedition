@@ -4,6 +4,7 @@ using PGGE.Patterns;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class CryptidBehaviour : MonoBehaviour , IDamageable
@@ -34,8 +35,15 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
     public float AttackRadius { get { return attackRadius; } }
     [SerializeField] private float movementSpeed = 5;
     public float MovementSpeed { get { return movementSpeed; } }
-
     private FSM fsm;
+
+    #region misc
+    private Collider2D cryptidCollider;
+    private SpriteRenderer spriteRenderer;
+
+    [SerializeField] private MusicClip chewingMusicClip;
+    [SerializeField] private MusicClip deathMusicClip;
+    #endregion
 
     private void Awake()
     {
@@ -44,6 +52,30 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
         fsm.Add((int) EnemyState.attack , new AttackingState(this , fsm));
         fsm.SetCurrentState((int)EnemyState.move );
         gameObject.layer = LayerMaskManager.enemylayerNameInt;
+    }
+
+    private void Start()
+    {
+        cryptidCollider = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        SettingUpMusic();
+
+    }
+
+    private void SettingUpMusic()
+    {
+        var chewingSoundEffect = gameObject.AddComponent<AudioSource>();
+        chewingSoundEffect.volume = chewingMusicClip.volume;
+        chewingSoundEffect.pitch = chewingMusicClip.pitch;
+        chewingSoundEffect.clip = chewingMusicClip.clip;
+        chewingMusicClip.source = chewingSoundEffect;
+
+        var deathSoundEffect = gameObject.AddComponent<AudioSource>();
+        deathSoundEffect.volume = deathMusicClip.volume;
+        deathSoundEffect.pitch = deathMusicClip.pitch;
+        deathSoundEffect.clip = deathMusicClip.clip;
+        deathMusicClip.source = deathSoundEffect;
     }
 
     private void OnDrawGizmos()
@@ -64,8 +96,22 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
         {
             health = 0;
             EventManager.Instance.CryptidDeathAlertListeners(this);
-            Destroy(gameObject);
+            StartCoroutine(DeathCoroutine());
         }
+    }
+
+    public void PlayAttackSoundEffect()
+    {
+        chewingMusicClip.source.Play();
+    }
+
+    private IEnumerator DeathCoroutine()
+    {
+        deathMusicClip.source.Play();
+        spriteRenderer.enabled = false;
+        cryptidCollider.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }
 

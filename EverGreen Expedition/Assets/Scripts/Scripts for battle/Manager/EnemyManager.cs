@@ -32,6 +32,7 @@ public class EnemyManager : MonoBehaviour
     private int maxAmountOfEnemy;
     private float progress;
     [SerializeField] private int numberLimitToBurst;
+    [SerializeField] private int timeBeforeStartingWave;
     private void Start()
     {
         progress = 1f;
@@ -71,6 +72,7 @@ public class EnemyManager : MonoBehaviour
     //do change this to make it more complex
     private IEnumerator StartEnemySpawning()
     {
+        yield return new WaitForSeconds(timeBeforeStartingWave);
         maxAmountOfEnemy = amountOfEnemiesToSpawn;
         bool doBurst = false;
         while(progress > 0f)

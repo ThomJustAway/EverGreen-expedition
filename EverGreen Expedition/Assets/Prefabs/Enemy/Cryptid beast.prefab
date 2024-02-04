@@ -99,14 +99,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 50
+  damage: 25
   minExp: 10
   maxExp: 20
   cryptidRemainMin: 10
   cryptidRemainMax: 20
-  attackSpeedPerSecond: 1
-  attackRadius: 1.05
+  attackSpeedPerSecond: 2
+  attackRadius: 1
   movementSpeed: 1
+  chewingMusicClip:
+    sfx: 0
+    clip: {fileID: 8300000, guid: 67099b47b37319f4d8ce88745578b6df, type: 3}
+    source: {fileID: 0}
+    volume: 0.61
+    pitch: 1
+  deathMusicClip:
+    sfx: 0
+    clip: {fileID: 8300000, guid: bd75eb308f7d4fc40ae0ee385fb2ee74, type: 3}
+    source: {fileID: 0}
+    volume: 0.676
+    pitch: 0.99
 --- !u!58 &1979159402546285116
 CircleCollider2D:
   m_ObjectHideFlags: 0

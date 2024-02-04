@@ -35,5 +35,7 @@ namespace Assets.Scripts.UI_related.Tutorial_related
                 ShowMessage();
             }
         }
+
+        
     }
 }
