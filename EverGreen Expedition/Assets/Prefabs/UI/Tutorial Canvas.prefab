@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clipToPlayWhenClick: 2
-  clipToPlayWhenHovered: 0
+  clipToPlayWhenHovered: 4
   actions:
     m_PersistentCalls:
       m_Calls:

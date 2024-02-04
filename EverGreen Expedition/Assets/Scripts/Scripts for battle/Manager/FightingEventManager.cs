@@ -1,6 +1,8 @@
 ﻿using Patterns;
 using System.Collections;
 using UnityEngine;
+using EventManagerYC;
+using System;
 
 namespace Assets.Scripts
 {
@@ -53,13 +55,12 @@ namespace Assets.Scripts
 
             StartCoroutine(GraduallyIncreaseWater());
 
-            EventManager.Instance.CryptidDeathAddListener(GainExpAndRemain);
+            //EventManager.Instance.CryptidDeathAddListener(GainExpAndRemain);
+            EventManager.Instance.AddListener(TypeOfEvent.CryptidDeath, (Action<CryptidBehaviour>) GainExpAndRemain );
             EventManager.Instance.AddListener(TypeOfEvent.WinEvent, UpdateWinScreen);
             EventManager.Instance.AddListener(TypeOfEvent.WinEvent, RemoveDependecy);
             EventManager.Instance.AddListener(TypeOfEvent.LoseEvent, RemoveDependecy);
         }
-
-        
 
         private IEnumerator GraduallyIncreaseWater()
         {
@@ -81,7 +82,7 @@ namespace Assets.Scripts
             if(currentHP <= 0)
             {
                 currentHP = 0;
-                EventManager.Instance.AlertListeners(TypeOfEvent.LoseEvent);
+                EventManager.Instance.TriggerEvent(TypeOfEvent.LoseEvent);
             }
         }
 
@@ -97,7 +98,10 @@ namespace Assets.Scripts
             else
             {
                 string message = $"You dont have enough resources!";
-                PopUp.Instance.ShowMessage(message, 4);
+                int duration = 4;
+
+                //show the eventManager
+                EventManager.Instance.TriggerEvent(TypeOfEvent.ShowPopUp, message, duration);
                 return false;
             }
         }
@@ -106,8 +110,8 @@ namespace Assets.Scripts
         private void GainExpAndRemain(CryptidBehaviour enemy)
         {
             //gain the experience
-            cryptidRemainGain += Random.Range(enemy.CryptidRemainMin, enemy.CryptidRemainMax);
-            experienceGain += Random.Range(enemy.MinExp, enemy.MaxExp);
+            cryptidRemainGain += UnityEngine.Random.Range(enemy.CryptidRemainMin, enemy.CryptidRemainMax);
+            experienceGain += UnityEngine.Random.Range(enemy.MinExp, enemy.MaxExp);
         }
         #endregion
 
@@ -120,7 +124,7 @@ namespace Assets.Scripts
 
         private void RemoveDependecy()
         {
-            EventManager.Instance.CryptidDeathRemoveListener(GainExpAndRemain);
+            EventManager.Instance.RemoveListener(TypeOfEvent.CryptidDeath, (Action<CryptidBehaviour>) GainExpAndRemain);
             EventManager.Instance.RemoveListener(TypeOfEvent.WinEvent, UpdateWinScreen);
             EventManager.Instance.RemoveListener(TypeOfEvent.WinEvent , RemoveDependecy);
             EventManager.Instance.RemoveListener(TypeOfEvent.LoseEvent, RemoveDependecy);
@@ -139,7 +143,6 @@ namespace Assets.Scripts
         public void OnWinContinueClick()
         {
             GameManager.Instance.UpdateStatsOnWin(cryptidRemainGain, experienceGain);
-            
         }
 
         //private void OnGUI()

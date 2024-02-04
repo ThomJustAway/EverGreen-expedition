@@ -34,6 +34,7 @@ namespace Assets.Scripts.Fern_weavers_and_turrets
         {
             if(targetCryptid == null)
             {
+                StopAllCoroutines();
                 var hitObject = Physics2D.CircleCast(transform.position,
                     visibleRange,
                     Vector2.zero,
@@ -47,7 +48,6 @@ namespace Assets.Scripts.Fern_weavers_and_turrets
                     targetCryptid = hitObject.transform.GetComponent<CryptidBehaviour>();
                     StartCoroutine(ShootBullet()); //continuously fire bullet until the cryptid is dead.
                 }
-
             }
         }
 
@@ -69,9 +69,6 @@ namespace Assets.Scripts.Fern_weavers_and_turrets
                 bullet.FireBullet(direction, projectileSpeed);
                 yield return new WaitForSeconds(attackSpeedPerSecond); //wait for a number of second before firing the next bullet
             }
-
-
-
         }
 
         private void InitBullet()

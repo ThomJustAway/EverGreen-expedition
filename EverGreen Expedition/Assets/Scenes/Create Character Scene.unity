@@ -1052,8 +1052,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb04a18a0e4a066459f77b7312226ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToPlayWhenClick: 1
-  clipToPlayWhenHovered: 3
+  clipToPlayWhenClick: 2
+  clipToPlayWhenHovered: 4
   actions:
     m_PersistentCalls:
       m_Calls: []
@@ -1140,8 +1140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb04a18a0e4a066459f77b7312226ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToPlayWhenClick: 1
-  clipToPlayWhenHovered: 3
+  clipToPlayWhenClick: 2
+  clipToPlayWhenHovered: 4
   actions:
     m_PersistentCalls:
       m_Calls: []
@@ -1322,8 +1322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb04a18a0e4a066459f77b7312226ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToPlayWhenClick: 1
-  clipToPlayWhenHovered: 3
+  clipToPlayWhenClick: 2
+  clipToPlayWhenHovered: 4
   actions:
     m_PersistentCalls:
       m_Calls: []
@@ -3013,8 +3013,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb04a18a0e4a066459f77b7312226ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToPlayWhenClick: 2
-  clipToPlayWhenHovered: 0
+  clipToPlayWhenClick: 1
+  clipToPlayWhenHovered: 3
   actions:
     m_PersistentCalls:
       m_Calls:

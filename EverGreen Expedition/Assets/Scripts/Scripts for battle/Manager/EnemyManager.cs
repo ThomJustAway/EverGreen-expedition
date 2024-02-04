@@ -3,11 +3,9 @@ using Assets.Scripts;
 using Assets.Scripts.Scripts_for_level_selection;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using TMPro;
-using Unity.VisualScripting;
+using EventManagerYC;
 using UnityEngine;
-using UnityEngine.UI;
+using System;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -37,7 +35,7 @@ public class EnemyManager : MonoBehaviour
     {
         progress = 1f;
         DecideOnNumberOfEnemy();
-        EventManager.Instance.CryptidDeathAddListener(CountEnemiesKilled);
+        EventManager.Instance.AddListener(TypeOfEvent.CryptidDeath, (Action<CryptidBehaviour>)CountEnemiesKilled);
 
         SettingUpVariables();
         UpdateUI();
@@ -81,7 +79,7 @@ public class EnemyManager : MonoBehaviour
 
             if (doBurst)
             {
-                int numberToBurst = Random.Range(2, numberLimitToBurst);
+                int numberToBurst = UnityEngine.Random.Range(2, numberLimitToBurst);
                 amountOfEnemiesToSpawn -= numberToBurst;
                 progress = (float)amountOfEnemiesToSpawn / (float)maxAmountOfEnemy;
                 for(int i = 0; i < numberToBurst; i++)
@@ -89,7 +87,7 @@ public class EnemyManager : MonoBehaviour
                     SpawnEnemy();
                 }
 
-                float nextWaveTiming = Random.Range(3.0f, 5.0f);
+                float nextWaveTiming = UnityEngine.Random.Range(3.0f, 5.0f);
                 yield return new WaitForSeconds(nextWaveTiming);
 
             }
@@ -101,7 +99,7 @@ public class EnemyManager : MonoBehaviour
 
                 SpawnEnemy();
 
-                float nextWaveTiming = Random.Range(3.0f, 5.0f);
+                float nextWaveTiming = UnityEngine.Random.Range(3.0f, 5.0f);
                 yield return new WaitForSeconds(nextWaveTiming);
             }
         }
@@ -112,7 +110,7 @@ public class EnemyManager : MonoBehaviour
         bool doBurst;
         if (amountOfEnemiesToSpawn > numberLimitToBurst)
         {
-            float randomNumber = Random.value;
+            float randomNumber = UnityEngine.Random.value;
             if (randomNumber <= 0.3)
             {
                 doBurst = true;
@@ -135,7 +133,7 @@ public class EnemyManager : MonoBehaviour
         enemiesKilled++;
         if(enemiesKilled == maxAmountOfEnemy)
         {
-            EventManager.Instance.AlertListeners(TypeOfEvent.WinEvent);
+            EventManager.Instance.TriggerEvent(TypeOfEvent.WinEvent);
         }
     }
 
@@ -198,7 +196,7 @@ public class EnemyManager : MonoBehaviour
             }
             //settle the y position
 
-            float randomYPosition = Random.Range(min.y, max.y);
+            float randomYPosition = UnityEngine.Random.Range(min.y, max.y);
             newPosition.y = randomYPosition;
         }
         else
@@ -214,7 +212,7 @@ public class EnemyManager : MonoBehaviour
             }
             //settle the y position
 
-            float randomXPosition = Random.Range(min.x, max.x);
+            float randomXPosition = UnityEngine.Random.Range(min.x, max.x);
             newPosition.x = randomXPosition;
         }
 
@@ -246,7 +244,7 @@ public class EnemyManager : MonoBehaviour
     #region misc
     private static bool RandomBool()
     {
-        return Random.value > 0.5f;
+        return UnityEngine.Random.value > 0.5f;
     }
 
     //private void OnGUI()

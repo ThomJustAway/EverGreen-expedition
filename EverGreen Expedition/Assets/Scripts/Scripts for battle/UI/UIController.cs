@@ -1,10 +1,6 @@
-using Assets.Scripts;
 using Assets.Scripts.UI;
-using Patterns;
-using System.Collections;
-using System.Collections.Generic;
+using EventManagerYC;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIController : Patterns.Singleton<UIController>

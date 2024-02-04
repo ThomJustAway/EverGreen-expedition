@@ -1,10 +1,9 @@
 using Assets.Scripts;
 using Assets.Scripts.EnemyFSM;
 using PGGE.Patterns;
-using System;
+
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
+using EventManagerYC;
 using UnityEngine;
 
 public class CryptidBehaviour : MonoBehaviour , IDamageable
@@ -47,10 +46,13 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
 
     private void Awake()
     {
+        //set up the FSM
         fsm = new FSM();
         fsm.Add((int) EnemyState.move , new MovingState(fsm, this));
         fsm.Add((int) EnemyState.attack , new AttackingState(this , fsm));
         fsm.SetCurrentState((int)EnemyState.move );
+
+        //make sure the cryptid is under the enemylayer mask so that it can be hit by the bullet
         gameObject.layer = LayerMaskManager.enemylayerNameInt;
     }
 
@@ -58,9 +60,7 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
     {
         cryptidCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         SettingUpMusic();
-
     }
 
     private void SettingUpMusic()
@@ -95,7 +95,7 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
         if(health < 0)
         {
             health = 0;
-            EventManager.Instance.CryptidDeathAlertListeners(this);
+            EventManager.Instance.TriggerEvent(TypeOfEvent.CryptidDeath,this);
             StartCoroutine(DeathCoroutine());
         }
     }
@@ -105,12 +105,13 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
         chewingMusicClip.source.Play();
     }
 
+    //start its death animation
     private IEnumerator DeathCoroutine()
     {
         deathMusicClip.source.Play();
         spriteRenderer.enabled = false;
         cryptidCollider.enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.4f); //wait for the death animation ends
         Destroy(gameObject);
     }
 }

@@ -4,5 +4,6 @@
     buttonClick,
     buttonClick2,
     HoverSFX,
-    HoverSFX2
+    HoverSFX2,
+    Notification
 }

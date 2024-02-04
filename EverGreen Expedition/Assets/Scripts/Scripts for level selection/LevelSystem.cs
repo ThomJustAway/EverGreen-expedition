@@ -1,11 +1,8 @@
 using Assets.Scripts;
 using Assets.Scripts.Data_manager;
 using Patterns;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using EventManagerYC;
 using TMPro;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -231,26 +228,29 @@ public class LevelSystem : Singleton<LevelSystem>
 
     private void TravelNormalEnemyLevel()
     {
+        EventManager.Instance.ResetManager();
         SceneManager.LoadScene(SceneName.BattleScene);
-
     }
 
     private void TravelCompletedLevel()
     {
-        EventManager.Instance.AlertListeners(TypeOfEvent.ReloadUI);
+        EventManager.Instance.ResetManager();
+        EventManager.Instance.TriggerEvent(TypeOfEvent.ReloadUI);
     }
 
     private void TravelAddPlantLevel()
     {
+        EventManager.Instance.ResetManager();
         SceneManager.LoadScene(SceneName.AddTowerScene);
-
     }
 
     private void TravelTeleporterLevel()
     {
         SetTeleporterBool(true);
-        //show pop up
-        EventManager.Instance.AlertListeners(TypeOfEvent.ReloadUI);
+
+        string message = "You can now <b>Teleport</b> to any level";
+        EventManager.Instance.TriggerEvent(TypeOfEvent.ShowPopUp, message , 4);
+        EventManager.Instance.TriggerEvent(TypeOfEvent.ReloadUI);
     }
 
     private void TravelBossLevel()

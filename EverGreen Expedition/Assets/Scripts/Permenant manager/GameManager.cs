@@ -1,5 +1,6 @@
 using Assets.Scripts;
 using Assets.Scripts.pattern;
+using EventManagerYC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,6 +63,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
         NodeIdCurrently = NodeTravelling; //now the player is now at this node
     }
 
+    //when player click the continue button after they win.
     public void UpdateStatsOnWin(int crptidRemainGain, int experienceGain)
     {
         Time.timeScale = 1f; //make sure the time resumes
@@ -69,6 +71,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
         stats.cryptidRemain += crptidRemainGain;
         stats.experience += experienceGain;
         playerStats = stats;
+        EventManager.Instance.ResetManager();
         SceneManager.LoadScene("Level Selection");
     }
 

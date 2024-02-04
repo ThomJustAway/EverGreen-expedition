@@ -27,6 +27,5 @@ public class selectingCharacterButton : MonoBehaviour
     public void OnClick()
     {
         panel.SetStat(stats);
-        print("set stats");
     }
 }

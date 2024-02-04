@@ -1,9 +1,8 @@
-using Assets.Scripts;
+
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using EventManagerYC;
 using System.Linq;
-using System.Xml;
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

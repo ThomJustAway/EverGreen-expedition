@@ -2597,8 +2597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb04a18a0e4a066459f77b7312226ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToPlayWhenClick: 0
-  clipToPlayWhenHovered: 2
+  clipToPlayWhenClick: 2
+  clipToPlayWhenHovered: 4
   actions:
     m_PersistentCalls:
       m_Calls:
@@ -3325,8 +3325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb04a18a0e4a066459f77b7312226ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToPlayWhenClick: 0
-  clipToPlayWhenHovered: 2
+  clipToPlayWhenClick: 2
+  clipToPlayWhenHovered: 4
   actions:
     m_PersistentCalls:
       m_Calls:
@@ -3594,7 +3594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1014.9, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323562344
@@ -3934,8 +3934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb04a18a0e4a066459f77b7312226ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToPlayWhenClick: 2
-  clipToPlayWhenHovered: 0
+  clipToPlayWhenClick: 1
+  clipToPlayWhenHovered: 3
   actions:
     m_PersistentCalls:
       m_Calls:
@@ -6458,7 +6458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 504.25, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1990586337

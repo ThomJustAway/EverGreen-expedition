@@ -92,8 +92,6 @@ public class SoundManager : SingletonDontDestroy<SoundManager>
 
     private IEnumerator WindUpMusic(AmbientMusicClip clip , float time)
     {
-        print($"Start to wind up {clip.ambientSFX}");
-
         currentAmbientClip = clip.ambientSFX;
         ambientAudioSource.clip = clip.clip;
         ambientAudioSource.Play();
