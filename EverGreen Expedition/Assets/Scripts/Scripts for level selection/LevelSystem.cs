@@ -47,6 +47,15 @@ public class LevelSystem : Singleton<LevelSystem>
         {
             adjacencyMatrix = GameManager.Instance.adjacencyMatrix;
         }
+        InitializeNode();
+    }
+
+    private void InitializeNode()
+    {
+        foreach (var node in nodes)
+        {
+            node.Init();
+        }
     }
 
     private void SetUpId()
@@ -234,7 +243,6 @@ public class LevelSystem : Singleton<LevelSystem>
 
     private void TravelCompletedLevel()
     {
-        EventManager.Instance.ResetManager();
         EventManager.Instance.TriggerEvent(TypeOfEvent.ReloadUI);
     }
 

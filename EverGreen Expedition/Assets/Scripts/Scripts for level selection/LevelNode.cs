@@ -18,7 +18,7 @@ public class LevelNode : MonoBehaviour ,IPointerDownHandler
 
     public Connection[] ConnectedNodes { get { return connectedNodes; } }
 
-    private void Start()
+    public void Init()
     {
         Reload();
         EventManager.Instance.AddListener(TypeOfEvent.ReloadUI, Reload);
@@ -80,6 +80,20 @@ public class LevelNode : MonoBehaviour ,IPointerDownHandler
                 image.sprite = SpriteContainer.Instance.CompleteLevel;
                 break;
         }
+
+        if (IsConnectedToPlayerNode() ||
+            IsPlayerCurrentNode() ||
+            LevelSystem.Instance.isTeleporterLevel)
+        {
+            image.color = Color.white;
+        }
+        else
+        {
+            print("this lin of code run");
+            float colorNumber = 190f / 255f;
+            image.color = new Color(colorNumber, colorNumber, colorNumber);
+            
+        }
     }
 
     //if player press the button
@@ -92,6 +106,11 @@ public class LevelNode : MonoBehaviour ,IPointerDownHandler
         {//check the adjaceny array to see if it is a node that can be click
             LevelSystem.Instance.SpawnInformationPanel(this);
         }
+        else
+        {
+            string message = "You cant travel here!";
+            EventManager.Instance.TriggerEvent(TypeOfEvent.ShowPopUp, message, 4);
+        }
     }
 
     //if connected to player node
@@ -103,6 +122,10 @@ public class LevelNode : MonoBehaviour ,IPointerDownHandler
         return false;
     }
 
+    public bool IsPlayerCurrentNode()
+    {
+        return GameManager.Instance.NodeIdCurrently == id;
+    }
 
 }
 
