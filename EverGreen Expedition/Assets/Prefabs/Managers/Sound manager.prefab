@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &72201271585850488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72201271585850490}
+  - component: {fileID: 72201271585850489}
+  m_Layer: 0
+  m_Name: Sound manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &72201271585850490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72201271585850488}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 982.58563, y: 494.34283, z: -17.440569}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &72201271585850489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72201271585850488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76357c0c618e534784b45fa7d3716f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicClips:
+  - sfx: 1
+    clip: {fileID: 8300000, guid: bd525f8cbb3fc0c4ab1dc571887affd5, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+  - sfx: 3
+    clip: {fileID: 8300000, guid: d34973c894c44824e8294ab67befd2a7, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+  - sfx: 2
+    clip: {fileID: 8300000, guid: 5c14f510a964af845922faa0ce39a517, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 2.05
+  - sfx: 4
+    clip: {fileID: 8300000, guid: 5c14f510a964af845922faa0ce39a517, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 2.05
+  - sfx: 5
+    clip: {fileID: 8300000, guid: dc0546d13679e954a8dc4c6650395002, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+  - sfx: 6
+    clip: {fileID: 8300000, guid: b5094ea093155c045925f83700d056b1, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+  ambientClips:
+  - ambientSFX: 0
+    clip: {fileID: 8300000, guid: 15acd62e5379ed74086fd1e953976725, type: 3}
+    source: {fileID: 0}
+    volume: 0.855
+    pitch: 1.31
+  - ambientSFX: 1
+    clip: {fileID: 8300000, guid: f0d84f4f18ef4da4ab4c96194165e96e, type: 3}
+    source: {fileID: 0}
+    volume: 0.855
+    pitch: 1.31
+  currentAmbientClip: 1

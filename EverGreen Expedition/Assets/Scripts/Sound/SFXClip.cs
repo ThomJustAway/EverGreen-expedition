@@ -5,5 +5,6 @@
     buttonClick2,
     HoverSFX,
     HoverSFX2,
-    Notification
+    Notification,
+    bulletHit
 }

@@ -8,9 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonDontDestroy<GameManager>
 {
+    [Header("test only")]
+    [SerializeField] private bool testing;
+    [SerializeField] private PlayerCurrentFernWeaverStats testingStats;
 
     public PlayerCurrentFernWeaverStats playerStats { get; private set; }
-
     #region level selection
     public int time { get; private set; }
     public int NodeIdCurrently { get; private set; }
@@ -29,7 +31,13 @@ public class GameManager : SingletonDontDestroy<GameManager>
         base.Awake();
         //change this later
         SetUpLevel();
+        if (testing)
+        {
+            playerStats = testingStats;
+        }
     }
+
+
 
     private void SetUpLevel()
     {

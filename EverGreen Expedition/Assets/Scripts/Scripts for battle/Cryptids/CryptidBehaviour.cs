@@ -92,6 +92,7 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
     public void TakeDamage(int amountOfDamage)
     {
         health -= amountOfDamage;
+        EventManager.Instance.TriggerEvent(TypeOfEvent.ShowDamagePopUp, (Vector2)transform.position, amountOfDamage);
         if(health < 0)
         {
             health = 0;

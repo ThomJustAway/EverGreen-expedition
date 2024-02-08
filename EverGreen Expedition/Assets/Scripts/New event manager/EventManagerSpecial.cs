@@ -245,6 +245,7 @@ namespace EventManagerYC
         ReloadUI,
 
         //misc,
-        ShowPopUp
+        ShowPopUp,
+        ShowDamagePopUp,
     }
 }

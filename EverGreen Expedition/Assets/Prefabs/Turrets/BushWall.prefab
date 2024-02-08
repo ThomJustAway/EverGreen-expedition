@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b27211e6382f5e141b5ff9f356d8af54, type: 3}
+  m_Sprite: {fileID: 1992170509, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,5 +147,5 @@ MonoBehaviour:
   healthpoint: 2000
   waterCost: 8
   leafHandleCost: 5
-  turretSprite: {fileID: 21300000, guid: b27211e6382f5e141b5ff9f356d8af54, type: 3}
+  turretSprite: {fileID: 1992170509, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
   detail: Strong bush to take heavy damage

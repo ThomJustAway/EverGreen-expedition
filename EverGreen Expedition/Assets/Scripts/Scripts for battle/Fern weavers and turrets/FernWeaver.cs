@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using EventManagerYC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,10 @@ public class FernWeaver : MonoBehaviour , IDamageable
 
     public void TakeDamage(int amountOfDamage)
     {
-        if(!isInvincible)
+        //show the damage
+        EventManager.Instance.TriggerEvent(TypeOfEvent.ShowDamagePopUp, (Vector2)transform.position, amountOfDamage);
+        
+        if (!isInvincible)
         {
             FightingEventManager.Instance.TakeDamage(amountOfDamage);
         }

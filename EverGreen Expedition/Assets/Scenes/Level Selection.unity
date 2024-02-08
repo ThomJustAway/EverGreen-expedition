@@ -1174,15 +1174,15 @@ PrefabInstance:
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[0].image
       value: 
-      objectReference: {fileID: 21300000, guid: c8b345d511076bf4a8b77c6870e2e7f9, type: 3}
+      objectReference: {fileID: -102562478, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[1].image
       value: 
-      objectReference: {fileID: 21300000, guid: 75fb99bf2c7073b4ca18cd24f01a1aba, type: 3}
+      objectReference: {fileID: -113000135, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[2].image
       value: 
-      objectReference: {fileID: 21300000, guid: 3f4635c8bb012194b87c32f9f6988e38, type: 3}
+      objectReference: {fileID: -876801105, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[3].image
       value: 
@@ -1190,7 +1190,7 @@ PrefabInstance:
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[4].image
       value: 
-      objectReference: {fileID: 21300000, guid: 81da7c50d9910fa41a9dac6b343b18a3, type: 3}
+      objectReference: {fileID: -1868114851, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[5].image
       value: 
@@ -1198,11 +1198,11 @@ PrefabInstance:
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[6].image
       value: 
-      objectReference: {fileID: 21300000, guid: 16ee089b6d389ed4c9ae20833a1b45f9, type: 3}
+      objectReference: {fileID: -2128211951, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[7].image
       value: 
-      objectReference: {fileID: 21300000, guid: 4e69d2399ac87564cad811c3e1cbab7a, type: 3}
+      objectReference: {fileID: -732332461, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[8].image
       value: 
@@ -1210,7 +1210,7 @@ PrefabInstance:
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[9].image
       value: 
-      objectReference: {fileID: 21300000, guid: c8b345d511076bf4a8b77c6870e2e7f9, type: 3}
+      objectReference: {fileID: -929598070, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
     - target: {fileID: 6064621866214598759, guid: 8dece4c94de1e5d47bc9f9a8afeaa5d8, type: 3}
       propertyPath: tutorialMessages.Array.data[0].message
       value: You are currently a solider (called a <b>Fern Weaver</b>) that needs
@@ -2597,12 +2597,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe7d8b905ac306646b8f3ccecdf10b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalEnemyLevel: {fileID: 21300000, guid: 4e69d2399ac87564cad811c3e1cbab7a, type: 3}
-  playerLevel: {fileID: 21300000, guid: 81da7c50d9910fa41a9dac6b343b18a3, type: 3}
-  completeLevel: {fileID: 21300000, guid: a014a5c3929912d40b987b19aee0d0c9, type: 3}
-  addTowerLevel: {fileID: 21300000, guid: 16ee089b6d389ed4c9ae20833a1b45f9, type: 3}
-  teleporterLevel: {fileID: 21300000, guid: 6a255fcf65157944a88b7e0ce9ff89b8, type: 3}
-  bossLevel: {fileID: 21300000, guid: ca8e33cc6fbd9ac40ae1c07422a16a31, type: 3}
+  normalEnemyLevel: {fileID: -732332461, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
+  playerLevel: {fileID: -1868114851, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
+  completeLevel: {fileID: 1273554454, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
+  addTowerLevel: {fileID: -2128211951, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
+  teleporterLevel: {fileID: 1857365911, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
+  bossLevel: {fileID: -1599691401, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
 --- !u!114 &1456058867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3138,7 +3138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c8b345d511076bf4a8b77c6870e2e7f9, type: 3}
+  m_Sprite: {fileID: -929598070, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

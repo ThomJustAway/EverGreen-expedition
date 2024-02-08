@@ -20,6 +20,9 @@ namespace Assets.Scripts
         public override void TakeDamage(int amountOfDamage)
         {
             healthpoint -= amountOfDamage;
+
+            EventManager.Instance.TriggerEvent(TypeOfEvent.ShowDamagePopUp, (Vector2)transform.position, amountOfDamage);
+
             if (healthpoint <= 0)
             {
                 healthpoint = 0;

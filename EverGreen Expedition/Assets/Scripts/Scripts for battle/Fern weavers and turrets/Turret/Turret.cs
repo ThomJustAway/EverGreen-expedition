@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EventManagerYC;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -30,7 +31,8 @@ namespace Assets.Scripts
         public virtual void TakeDamage(int amountOfDamage)
         {
             healthpoint -= amountOfDamage;
-            if(healthpoint <= 0 ) { 
+            EventManager.Instance.TriggerEvent(TypeOfEvent.ShowDamagePopUp, (Vector2)transform.position, amountOfDamage);
+            if (healthpoint <= 0 ) { 
                 healthpoint = 0; 
                 FightingEventManager.Instance.RefundLeafHandle(leafHandleCost);
                 Destroy(gameObject); 
