@@ -28,8 +28,8 @@ public class LevelSystem : Singleton<LevelSystem>
     [SerializeField] private TextMeshProUGUI buttonText;
     [SerializeField] private Image buttonImage;
     private Color originalColor;
-
     #endregion
+
     protected override void Awake()
     {
         base.Awake();
@@ -38,7 +38,7 @@ public class LevelSystem : Singleton<LevelSystem>
 
     private void Start()
     {
-        originalColor = buttonImage.color;
+        originalColor = buttonImage.color; //cache the button image color for later used
         if (!GameManager.Instance.hasSetMatrix)
         {
             CreateAdjacenyMatrix();
@@ -48,6 +48,7 @@ public class LevelSystem : Singleton<LevelSystem>
             adjacencyMatrix = GameManager.Instance.adjacencyMatrix;
         }
         InitializeNode();
+
     }
 
     private void InitializeNode()

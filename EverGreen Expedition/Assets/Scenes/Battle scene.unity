@@ -560,6 +560,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sound manager
       objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850488, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
       propertyPath: musicClips.Array.size
       value: 5
@@ -2709,7 +2713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1080546061}
   m_Layer: 0
-  m_Name: ------Manager------------
+  m_Name: ------Testing Manager------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
