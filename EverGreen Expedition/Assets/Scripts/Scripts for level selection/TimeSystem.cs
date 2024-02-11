@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using EventManagerYC;
 using Assets.Scripts.UI_related.Misc;
+using JetBrains.Annotations;
 
 namespace Assets.Scripts.Scripts_for_level_selection
 {
@@ -25,9 +26,16 @@ namespace Assets.Scripts.Scripts_for_level_selection
         private void SetUp()
         {
             var time = GameManager.Instance.time;
+            print($"previous time{previousTime} current time {time}");
             if (time != previousTime)
             {
+                print("time is different");
+                SetDayText(previousTime);
                 DoAddingOfTimeToText(time);
+            }
+            else
+            {
+                SetDayText(previousTime);
             }
             //Deciding the the current time difficulty
             TimeDifficulty currentDifficulty = HandleTimeDifficulty(time);
@@ -97,12 +105,18 @@ namespace Assets.Scripts.Scripts_for_level_selection
             int amountChange = currentTime - previousTime;
             for(int i = 1; i <= amountChange; i++)
             {
-                dayText.text = $"{previousTime + i} Day";
+                SetDayText(previousTime + i);
                 yield return new WaitForSeconds(0.2f);
             }
             previousTime = currentTime;
         }
 
+
+        private void SetDayText(int time)
+        {
+            dayText.text = $"{time} Day";
+
+        }
 
     }
 

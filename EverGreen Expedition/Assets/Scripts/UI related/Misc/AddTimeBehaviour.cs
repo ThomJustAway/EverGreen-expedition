@@ -11,25 +11,29 @@ namespace Assets.Scripts.UI_related.Misc
         private TextMeshProUGUI text;
         private Animator animator;
 
-        private void Start()
+        private void Awake() //make it disable when awake to prevent any race case
         {
-            animator = gameObject.GetComponent<Animator>();
-            text = gameObject.GetComponent<TextMeshProUGUI>();
             gameObject.SetActive(false);
         }
 
         public void PlayAnimation(int days)
         {
             gameObject.SetActive(true);
+            if (animator == null || text == null)
+            {
+                animator = gameObject.GetComponent<Animator>();
+                text = gameObject.GetComponent<TextMeshProUGUI>();
+            }
+
             text.text = $"+{days} Days";
             animator.SetTrigger("Activate");
         }
 
+        //called when the animation is ended
         public void OnAnimationEnd()
         {
             timeSystem.ReflectTimeChanges();
             gameObject.SetActive(false);
-
         }
     }
 }

@@ -89,7 +89,6 @@ public class LevelNode : MonoBehaviour ,IPointerDownHandler
         }
         else
         {
-            print("this lin of code run");
             float colorNumber = 190f / 255f;
             image.color = new Color(colorNumber, colorNumber, colorNumber);
             
