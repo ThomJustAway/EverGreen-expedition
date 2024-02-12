@@ -12,6 +12,11 @@ public class FernWeaver : MonoBehaviour , IDamageable
         gameObject.layer = LayerMaskManager.turretlayerNameInt;
     }
 
+    private void Start()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = GameManager.Instance.playerStats.fernWeaverSprite;
+    }
+
     public void TakeDamage(int amountOfDamage)
     {
         //show the damage

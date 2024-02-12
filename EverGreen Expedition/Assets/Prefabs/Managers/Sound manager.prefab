@@ -75,6 +75,11 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 0.5
     pitch: 1
+  - sfx: 7
+    clip: {fileID: 8300000, guid: 09c3897cf78e3154bb4b7488a4012408, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
   ambientClips:
   - ambientSFX: 0
     clip: {fileID: 8300000, guid: 15acd62e5379ed74086fd1e953976725, type: 3}

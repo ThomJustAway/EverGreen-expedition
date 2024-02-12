@@ -13,9 +13,10 @@ namespace Assets.Scripts.Scripts_for_level_selection
         [SerializeField] private TextMeshProUGUI difficultyText;
 
         [SerializeField]private AddTimeBehaviour addingTimeText;
-        
+        [SerializeField] private DifficultyCanvas difficultyCanvas;
+
         private static int previousTime = 0;
-        private static TimeDifficulty previousDifficulty = TimeDifficulty.Easy;
+        private static TimeDifficulty previousDifficulty = TimeDifficulty.None;
 
         private void Start()
         {
@@ -42,17 +43,11 @@ namespace Assets.Scripts.Scripts_for_level_selection
 
             if (currentDifficulty != previousDifficulty)
             {
-                //show the changes here
+                previousDifficulty = currentDifficulty;//set the new diffculty
+                difficultyCanvas.SetAndPlayDifficultyCanvas(currentDifficulty); //show the new difficulty data
             }
         }
 
-        private void DoAddingOfTimeToText(int time)
-        {
-            int amountOfDayAdded = time - previousTime;
-
-            addingTimeText.PlayAnimation(amountOfDayAdded);
-            //after the animation is done playing then it will start playing the coroutine;
-        }
 
         private TimeDifficulty HandleTimeDifficulty(int time)
         {
@@ -93,7 +88,16 @@ namespace Assets.Scripts.Scripts_for_level_selection
             }
             difficultyText.text = text;
         }
-        
+
+        #region text related        
+        private void DoAddingOfTimeToText(int time)
+        {
+            int amountOfDayAdded = time - previousTime;
+
+            addingTimeText.PlayAnimation(amountOfDayAdded);
+            //after the animation is done playing then it will start playing the coroutine;
+        }
+
         public void ReflectTimeChanges()
         {
             StartCoroutine(StartReflecting());
@@ -111,17 +115,17 @@ namespace Assets.Scripts.Scripts_for_level_selection
             previousTime = currentTime;
         }
 
-
         private void SetDayText(int time)
         {
             dayText.text = $"{time} Day";
 
         }
-
+        #endregion
     }
 
     public enum TimeDifficulty
     {
+        None,
         Easy ,
         Medium = 15,
         Hard =25

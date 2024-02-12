@@ -104,6 +104,7 @@ MonoBehaviour:
   leafHandleCost: 4
   turretSprite: {fileID: -417209880, guid: 17d95baeb2ecd8642a6427dfd658751e, type: 3}
   detail: A normal projectile plant
+  spawnReload: 4
   projectileDamage: 21
   visibleRange: 10
   attackSpeedPerSecond: 3

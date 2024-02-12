@@ -693,6 +693,7 @@ MonoBehaviour:
   - {fileID: 2646597535897822773, guid: 442a813611e18c3499188e2af64a51ea, type: 3}
   - {fileID: 7330323958132423449, guid: 3aaaaf993a5864a44a361242ca3c8158, type: 3}
   - {fileID: 5251817526851731141, guid: dfe8cf52c80b16a47a9173e6a8f025aa, type: 3}
+  - {fileID: 163170267138469760, guid: 7df02d4e03c80094da33d441b77b30ad, type: 3}
   cardPanel: {fileID: 958266518}
   detailText: {fileID: 167545058}
   continueButton: {fileID: 1775644978}

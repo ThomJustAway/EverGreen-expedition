@@ -6,6 +6,7 @@ namespace Assets.Scripts
 {
     public  class Turret : MonoBehaviour , IDamageable 
     {
+        #region properties
         [SerializeField] protected string turretName;
         public string TurretName { get { return turretName; } }
 
@@ -22,6 +23,11 @@ namespace Assets.Scripts
 
         [TextArea(3 ,4 )]
         [SerializeField] private string detail;
+        [Header("in second the amount of time needed to spawn a turret")]
+        [SerializeField] protected float spawnReload;
+        public float SpawnReload { get { return spawnReload; }}
+        #endregion
+
         public string Detail { get { return detail; } }
         protected virtual void Awake()
         {

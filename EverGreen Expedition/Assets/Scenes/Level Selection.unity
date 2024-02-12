@@ -213,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308295760849215390, guid: 069d7998f33702441958da3ec6e033e6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -886,7 +886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3182057395891359160, guid: 2edb8966ae6a35043ac6e3f1096d50a6, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 16777215
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4906342075779154993, guid: 2edb8966ae6a35043ac6e3f1096d50a6, type: 3}
       propertyPath: m_Name
@@ -979,7 +979,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <b><color=yellow>Easy </color>
+  m_text: <b>Hard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 402990bd6d2f41c40acad7f98749d95f, type: 2}
   m_sharedMaterial: {fileID: -6949919560403814776, guid: 402990bd6d2f41c40acad7f98749d95f, type: 2}
@@ -988,8 +988,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1775,7 +1775,7 @@ GameObject:
   - component: {fileID: 723814937}
   - component: {fileID: 723814936}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TIP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1830,7 +1830,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 201326591
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2311,7 +2311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7896047926998560650, guid: 0382815890d15e14d81de8f0ea52b370, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2337,16 +2337,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 72201271585850488, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
       propertyPath: musicClips.Array.size
-      value: 5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: musicClips.Array.data[5].sfx
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
       propertyPath: musicClips.Array.data[2].clip
       value: 
       objectReference: {fileID: 8300000, guid: cd918da67b7e4264e9074dca8f22a7dd, type: 3}
+    - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: musicClips.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 09c3897cf78e3154bb4b7488a4012408, type: 3}
+    - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: musicClips.Array.data[5].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 982.58563
@@ -2582,6 +2594,7 @@ MonoBehaviour:
   dayText: {fileID: 31014063}
   difficultyText: {fileID: 1376516423}
   addingTimeText: {fileID: 1479577701}
+  difficultyCanvas: {fileID: 1108077486}
 --- !u!114 &1045483934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2708,13 +2721,14 @@ GameObject:
   - component: {fileID: 1108077483}
   - component: {fileID: 1108077482}
   - component: {fileID: 1108077481}
+  - component: {fileID: 1108077486}
   m_Layer: 5
   m_Name: Difficulty canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1108077481
 Animator:
   serializedVersion: 5
@@ -2822,6 +2836,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1108077486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108077480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dffd26341969f74491c8a0a5b3755b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficultyText: {fileID: 389995272}
+  tipText: {fileID: 723814936}
+  messages:
+  - difficulty: 1
+    message: "<b>Tip:</b> \nTry and utalise the time and grow your power before more
+      cryptids come!"
+    color: {r: 0.3372549, g: 0.72156864, b: 0.2784314, a: 1}
+  - difficulty: 15
+    message: "<b>Tip:</b> \nBecareful of time! There will be a large number of cryptid
+      that will come!"
+    color: {r: 1, g: 0.6117647, b: 0, a: 1}
+  - difficulty: 25
+    message: "<b>Tip:</b> \nQuickly grow your strength as the mother cryptid know
+      where you are!"
+    color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &1123378447
 PrefabInstance:
   m_ObjectHideFlags: 0

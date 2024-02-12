@@ -97,11 +97,6 @@ namespace Assets.Scripts
             }
             else
             {
-                string message = $"You dont have enough resources!";
-                int duration = 4;
-
-                //show the eventManager
-                EventManager.Instance.TriggerEvent(TypeOfEvent.ShowPopUp, message, duration);
                 return false;
             }
         }
