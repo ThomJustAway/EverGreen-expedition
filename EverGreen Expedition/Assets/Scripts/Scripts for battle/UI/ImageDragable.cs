@@ -65,6 +65,7 @@ namespace Assets.Scripts.UI
             startMoving = false;
             gameObject.SetActive(startMoving);
 
+            SoundManager.Instance.PlayAudio(SFXClip.PlacingTurret);
             //place the turret down
             GameObject turret = Instantiate(assignTurret.gameObject , turretContainer);
             Vector3 newPosition = GetMousePositionInWorldSpace();

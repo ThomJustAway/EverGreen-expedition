@@ -29,8 +29,12 @@ public class EnemyManager : MonoBehaviour
     private int enemiesKilled;
     private int maxAmountOfEnemy;
     private float progress;
-    [SerializeField] private int numberLimitToBurst;
-    [SerializeField] private int timeBeforeStartingWave;
+    [SerializeField] private Transform enemyContainer;
+    [SerializeField] 
+    private int numberLimitToBurst;
+    [SerializeField] 
+    private int timeBeforeStartingWave;
+
     private void Start()
     {
         progress = 1f;
@@ -49,6 +53,7 @@ public class EnemyManager : MonoBehaviour
 
     private void DecideOnNumberOfEnemy()
     {
+        //this will calculate how many cryptid will spawn for each difficulty that increases
         int timePassed = GameManager.Instance.time;
         if ( timePassed >= (int)TimeDifficulty.Hard)
         {
@@ -154,7 +159,7 @@ public class EnemyManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        UIController.Instance.UpdateAmountOfEnemies(amountOfEnemiesToSpawn);
+        UIController.Instance.UpdateAmountOfEnemies(maxAmountOfEnemy - enemiesKilled);
         UIController.Instance.UpdateWaveProgressBar(progress);
     }
 
@@ -227,8 +232,7 @@ public class EnemyManager : MonoBehaviour
 
         alert.SetActive(true);
         alert.transform.localPosition = (Vector3)position;
-        
-        
+        SoundManager.Instance.PlayAudio(SFXClip.Alert);
 
         float spawnTiming = 10f;
         yield return new WaitForSeconds(spawnTiming);
@@ -236,7 +240,7 @@ public class EnemyManager : MonoBehaviour
         alert.SetActive(false);
         alertObjectPool.Enqueue(alert);//return back to the pool
 
-        var enemy = Instantiate(enemies[0]);
+        var enemy = Instantiate(enemies[0] , enemyContainer);
         enemy.transform.position = position;
     }
     #endregion
@@ -247,14 +251,6 @@ public class EnemyManager : MonoBehaviour
         return UnityEngine.Random.value > 0.5f;
     }
 
-    //private void OnGUI()
-    //{
-    //    bool spawnenemy = GUI.Button(new Rect(0, 200, 100, 100), "Spawn enemy");
-    //    if (spawnenemy)
-    //    {
-    //        SpawnEnemy();
-    //    }
-    //}
     #endregion
 
 }
