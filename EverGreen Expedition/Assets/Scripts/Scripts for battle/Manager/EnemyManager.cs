@@ -67,6 +67,7 @@ public class EnemyManager : MonoBehaviour
         {
             amountOfEnemiesToSpawn = 15 + timePassed;
         }
+        maxAmountOfEnemy = amountOfEnemiesToSpawn;
     }
 
     #region Coroutine
@@ -241,7 +242,7 @@ public class EnemyManager : MonoBehaviour
         alertObjectPool.Enqueue(alert);//return back to the pool
 
         var enemy = Instantiate(enemies[0] , enemyContainer);
-        enemy.transform.position = position;
+        enemy.transform.localPosition= position;
     }
     #endregion
 

@@ -13,6 +13,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private Canvas canvas;
         private Turret assignTurret;
         [SerializeField]private Transform turretContainer;
+        [SerializeField] private GameObject tips;
+
         private bool startMoving = false;
         public void OnDrag(PointerEventData eventData)
         {
@@ -24,13 +26,14 @@ namespace Assets.Scripts.UI
             assignTurret = turretAssign;
             imageComponent.sprite = turretAssign.TurretSprite;
             startMoving = true;
-
+            tips.SetActive(true);
             gameObject.SetActive(startMoving);//now show the image 
         }
 
         protected override void Awake()
         {
             base.Awake();
+            tips.SetActive(false); //dont show the tip
             gameObject.SetActive(false); //do not show it at the player
         }
 
@@ -39,12 +42,16 @@ namespace Assets.Scripts.UI
             if (startMoving)
             {
                 MoveImage();
+                if(Input.GetMouseButtonDown(0))
+                {//place the turret down
+                    StopMoving();
+                }
+                else if (Input.GetKeyUp(KeyCode.R))
+                {
+                    StoppingPlacing();
+                }
             }
 
-            if(Input.GetMouseButtonDown(0))
-            {//place the turret down
-                StopMoving();
-            }
         }
 
 
@@ -60,18 +67,32 @@ namespace Assets.Scripts.UI
             newPosition.y -= Screen.height / 2;
             imageComponent.rectTransform.anchoredPosition = newPosition;
         }
+
+        private void StoppingPlacing()
+        {
+            StoppingDragable();
+            FightingEventManager.Instance.RefundLeafHandle(assignTurret.LeafHandleCost);
+            FightingEventManager.Instance.IncreaseWater(assignTurret.WaterCost);
+        }
+
         private void StopMoving()
         {
-            startMoving = false;
-            gameObject.SetActive(startMoving);
+            StoppingDragable();
 
             SoundManager.Instance.PlayAudio(SFXClip.PlacingTurret);
             //place the turret down
-            GameObject turret = Instantiate(assignTurret.gameObject , turretContainer);
+            GameObject turret = Instantiate(assignTurret.gameObject, turretContainer);
             Vector3 newPosition = GetMousePositionInWorldSpace();
             newPosition.z = 0;
             turret.transform.localPosition = newPosition;
 
+        }
+
+        private void StoppingDragable()
+        {
+            startMoving = false;
+            gameObject.SetActive(startMoving);
+            tips.SetActive(startMoving);
         }
     }
 }

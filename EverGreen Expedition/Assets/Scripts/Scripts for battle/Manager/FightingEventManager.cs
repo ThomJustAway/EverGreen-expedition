@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using EventManagerYC;
 using System;
+using Unity.Mathematics;
 
 namespace Assets.Scripts
 {
@@ -21,8 +22,8 @@ namespace Assets.Scripts
 
         #region water
         private int waterGainPerSecond;
-        [SerializeField] private int timeTakenToCollectWater;
-
+        [SerializeField] private float minTimeTakenToCollectWater;
+        [SerializeField] private float maxTimeTakenCollectWater;
         #endregion
         private void Start()
         {
@@ -33,6 +34,8 @@ namespace Assets.Scripts
         {
             UIController.Instance.UpdateUI(maxHP, currentHP, maxLeafHandle, currentLeafHandle, waterResources);
         }
+
+
         public void StartNewGame()
         {
 
@@ -67,12 +70,14 @@ namespace Assets.Scripts
             while (true)
             {
                 IncreaseWater(waterGainPerSecond);
-                yield return new WaitForSeconds(timeTakenToCollectWater); 
+                float newTimeToWait = UnityEngine.Random.Range(minTimeTakenToCollectWater, maxTimeTakenCollectWater);
+                yield return new WaitForSeconds(newTimeToWait); 
             }
         }
 
         public void IncreaseWater(int water)
         {
+            SoundManager.Instance.PlayAudio(SFXClip.WaterIncreaseing);
             waterResources += water;
         }
 

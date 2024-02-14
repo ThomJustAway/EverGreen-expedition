@@ -16,17 +16,28 @@ namespace Assets.Scripts.UI
         [SerializeField] private TextMeshProUGUI waterCostUI;
         [SerializeField] private TextMeshProUGUI leafHandleCostUI;
         [SerializeField] private Image spriteImageContainer;
-
         private bool canBuy = true;
         [SerializeField] private Slider sliderForCoolDown;
 
-        public void Init(Turret assignedTurret)
+        private int keyBindAssign;
+        [SerializeField] private TextMeshProUGUI keyBindText;
+        public void Init(Turret assignedTurret , int keyBindIndex)
         {
             assignTurretPrefab = assignedTurret;
             spriteImageContainer.sprite = assignTurretPrefab.TurretSprite;
             turretNameUI.text = assignTurretPrefab.TurretName;
             waterCostUI.text = assignTurretPrefab.WaterCost.ToString();
             leafHandleCostUI.text = assignTurretPrefab.LeafHandleCost.ToString();
+            keyBindText.text = $"<b>{keyBindIndex}";
+            keyBindAssign = keyBindIndex + 48; //for key code
+        }
+
+        public void Update()
+        {
+            if (Input.GetKeyUp((KeyCode) keyBindAssign))
+            {
+                TryBuyTurret();
+            }
         }
 
         private IEnumerator StartCoolDown()
@@ -52,7 +63,12 @@ namespace Assets.Scripts.UI
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (!canBuy) 
+            TryBuyTurret();
+        }
+
+        private void TryBuyTurret()
+        {
+            if (!canBuy)
             {
                 string message = $"The turret is on cooldown!";
                 int duration = 4;
@@ -61,7 +77,7 @@ namespace Assets.Scripts.UI
             }
 
 
-            if(FightingEventManager.Instance.CanBuyTurret(
+            if (FightingEventManager.Instance.CanBuyTurret(
                 assignTurretPrefab.WaterCost,
                 assignTurretPrefab.LeafHandleCost
                 ))
@@ -76,6 +92,6 @@ namespace Assets.Scripts.UI
                 EventManager.Instance.TriggerEvent(TypeOfEvent.ShowPopUp, message, duration);
                 //show error here
             }
-        }        
+        }
     }
 }

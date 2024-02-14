@@ -105,7 +105,7 @@ MonoBehaviour:
   cryptidRemainMin: 10
   cryptidRemainMax: 20
   attackSpeedPerSecond: 2
-  attackRadius: 1
+  attackRadius: 0.42
   movementSpeed: 1
   chewingMusicClip:
     sfx: 0

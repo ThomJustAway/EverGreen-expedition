@@ -44,11 +44,13 @@ public class UIController : Patterns.Singleton<UIController>
     private void SetUpTurretCard()
     {
         var playerTurrets = GameManager.Instance.playerStats.turrets;
+        int keybind = 1;
         foreach(var playerTurret in playerTurrets)
         {
             var card = Instantiate(turretCardPrefab , turretContainer);
             //initialise the button
-            card.GetComponent<TurretButton>().Init(playerTurret);
+            card.GetComponent<TurretButton>().Init(playerTurret , keybind);
+            keybind++;
         }
     }
 
