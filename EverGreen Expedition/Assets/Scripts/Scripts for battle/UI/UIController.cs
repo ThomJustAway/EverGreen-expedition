@@ -79,6 +79,7 @@ public class UIController : Patterns.Singleton<UIController>
 
     private void UpdateWaterUI(int currentWater)
     {
+
         playerWaterResourcesText.text = currentWater.ToString();
     }
 
