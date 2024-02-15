@@ -11,5 +11,8 @@
     DifficultyReach,
     Alert,
     PlacingTurret,
-    WaterIncreaseing
+    WaterIncreaseing,
+    WarningSFX,
+    WinningSFX,
+    LosingSFX
 }

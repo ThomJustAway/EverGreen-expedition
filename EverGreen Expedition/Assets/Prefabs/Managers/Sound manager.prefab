@@ -85,6 +85,31 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 0.457
     pitch: 1.78
+  - sfx: 9
+    clip: {fileID: 8300000, guid: aa6c1093f2bf4bd4499c5a1735939c90, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1.43
+  - sfx: 10
+    clip: {fileID: 8300000, guid: 40fa562eadd73b442b852f9721351320, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+  - sfx: 11
+    clip: {fileID: 8300000, guid: c373dc05bc1719243abe6433bdff3e81, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1.5
+  - sfx: 12
+    clip: {fileID: 8300000, guid: b17b79a687957664e99484343b579c3f, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1.5
+  - sfx: 11
+    clip: {fileID: 8300000, guid: 649f45a49911b3e45b0cb6e8de9f6839, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1.5
   ambientClips:
   - ambientSFX: 0
     clip: {fileID: 8300000, guid: 15acd62e5379ed74086fd1e953976725, type: 3}

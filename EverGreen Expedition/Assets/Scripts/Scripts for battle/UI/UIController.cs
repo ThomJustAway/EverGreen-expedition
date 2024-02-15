@@ -102,12 +102,14 @@ public class UIController : Patterns.Singleton<UIController>
     private void ShowWinScreen()
     {
         Time.timeScale = 0f; //stop the time
+        SoundManager.Instance.PlayAudio(SFXClip.WinningSFX);
         winScreen.SetActive(true);
     }
 
     private void ShowLoseScreen()
     {
         Time.timeScale = 0f; //stop the time
+        SoundManager.Instance.PlayAudio(SFXClip.LosingSFX);
         loseScreen.SetActive(true);
     }
 

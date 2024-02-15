@@ -24,17 +24,17 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject alertPrefab;
     [SerializeField]private int startingPoolNumber;
 
-    [Header("Enemies")]
     private int amountOfEnemiesToSpawn;
     private int enemiesKilled;
     private int maxAmountOfEnemy;
     private float progress;
+    [Header("Enemies")]
     [SerializeField] private Transform enemyContainer;
-    [SerializeField] 
-    private int numberLimitToBurst;
-    [SerializeField] 
-    private int timeBeforeStartingWave;
+    [SerializeField] private int numberLimitToBurst;
+    [SerializeField] private int timeBeforeStartingWave;
 
+    [Header("warning canvas")]
+    [SerializeField] private WarningCanvas warningCanvas;
     private void Start()
     {
         progress = 1f;
@@ -77,6 +77,8 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator StartEnemySpawning()
     {
         yield return new WaitForSeconds(timeBeforeStartingWave);
+
+        warningCanvas.PlayWarning();
         maxAmountOfEnemy = amountOfEnemiesToSpawn;
         bool doBurst = false;
         while(progress > 0f)
