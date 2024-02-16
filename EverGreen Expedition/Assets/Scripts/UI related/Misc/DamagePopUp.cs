@@ -18,7 +18,7 @@ namespace Assets.Scripts.UI_related.Misc
 
         public void Play(int damageCount)
         {
-            text.text = $"{damageCount} <sprite=3>";
+            text.text = $"-{damageCount} <sprite=3>";
 
             string key = "Start";
             animator.SetTrigger(key);

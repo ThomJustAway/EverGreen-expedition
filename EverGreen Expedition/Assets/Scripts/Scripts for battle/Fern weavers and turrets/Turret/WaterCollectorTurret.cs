@@ -37,6 +37,14 @@ namespace Assets.Scripts
             StopAllCoroutines();
         }
 
+        public override void RemoveTurret()
+        {
+            EventManager.Instance.RemoveListener(TypeOfEvent.WinEvent, EndCoroutine);
+            EventManager.Instance.RemoveListener(TypeOfEvent.LoseEvent, EndCoroutine);
+            EndCoroutine();
+            base.RemoveTurret();
+        }
+
         private IEnumerator GainWater()
         {
             while (true)

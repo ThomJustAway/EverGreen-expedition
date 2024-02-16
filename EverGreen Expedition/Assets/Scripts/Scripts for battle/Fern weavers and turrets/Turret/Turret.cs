@@ -45,7 +45,7 @@ namespace Assets.Scripts
             }
         }
 
-        public void RemoveTurret()
+        public virtual void RemoveTurret()
         {//remove the turret
             FightingEventManager.Instance.RefundLeafHandle(leafHandleCost);
             Destroy(gameObject);

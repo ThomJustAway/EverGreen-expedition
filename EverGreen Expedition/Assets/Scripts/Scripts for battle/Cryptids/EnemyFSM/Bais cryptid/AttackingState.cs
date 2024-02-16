@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.EnemyFSM
 {
-    public class AttackingState : CryptidState
+    public class AttackingState : CryptidBehaviourState<CryptidBehaviour>
     {
         private float elapseTime;
 

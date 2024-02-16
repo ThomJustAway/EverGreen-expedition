@@ -47,16 +47,26 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
     private void Awake()
     {
         //set up the FSM
-        fsm = new FSM();
-        fsm.Add((int) EnemyState.move , new MovingState(fsm, this));
-        fsm.Add((int) EnemyState.attack , new AttackingState(this , fsm));
-        fsm.SetCurrentState((int)EnemyState.move );
+        SettingUpFSM();
 
         //make sure the cryptid is under the enemylayer mask so that it can be hit by the bullet
         gameObject.layer = LayerMaskManager.enemylayerNameInt;
     }
 
+    protected virtual void SettingUpFSM()
+    {
+        fsm = new FSM();
+        fsm.Add((int)EnemyState.move, new MovingState(fsm, this));
+        fsm.Add((int)EnemyState.attack, new AttackingState(this, fsm));
+        fsm.SetCurrentState((int)EnemyState.move);
+    }
+
     private void Start()
+    {
+        InitOnStart();
+    }
+
+    protected virtual void InitOnStart()
     {
         cryptidCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();

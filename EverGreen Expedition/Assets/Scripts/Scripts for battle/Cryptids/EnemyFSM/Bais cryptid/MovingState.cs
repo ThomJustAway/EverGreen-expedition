@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.EnemyFSM
 {
-    public class MovingState : CryptidState
+    public class MovingState : CryptidBehaviourState<CryptidBehaviour>
     {
         private Transform player;
 
