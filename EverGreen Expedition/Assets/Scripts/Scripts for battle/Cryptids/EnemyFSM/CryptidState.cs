@@ -4,24 +4,15 @@ using UnityEngine;
 
 namespace Assets.Scripts.EnemyFSM
 {
-    //public class CryptidState : FSMState
-    //{
-    //    protected CryptidBehaviour cryptidBehaviour;
 
-    //    public CryptidState(CryptidBehaviour cryptidBehaviour , FSM fSM): base()
-    //    {
-    //        this.cryptidBehaviour = cryptidBehaviour;
-    //        mFsm = fSM;
-    //    }
-    //}
 
     public class CryptidBehaviourState<TypeOfEnemy> : FSMState where TypeOfEnemy : CryptidBehaviour
     {
-        protected TypeOfEnemy cryptidBehaviour;
+        protected TypeOfEnemy cryptid;
 
-        public CryptidBehaviourState(TypeOfEnemy cryptidBehaviour, FSM fSM) : base()
+        public CryptidBehaviourState(TypeOfEnemy cryptid, FSM fSM) : base()
         {
-            this.cryptidBehaviour = cryptidBehaviour;
+            this.cryptid = cryptid;
             mFsm = fSM;
         }
     }  

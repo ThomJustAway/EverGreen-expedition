@@ -8,15 +8,17 @@ using UnityEngine;
 
 public class CryptidBehaviour : MonoBehaviour , IDamageable
 {
-    [SerializeField] private int health = 100;
-    [SerializeField] private int damage = 10;
+    [SerializeField] protected int health = 100;
+    [SerializeField] protected int damage = 10;
+    [SerializeField] protected float movementSpeed = 5;
+    public float MovementSpeed { get { return movementSpeed; } }
 
     [Header("Reward")]
-    [SerializeField] private int minExp = 10;
-    [SerializeField] private int maxExp = 20;
+    [SerializeField] protected int minExp = 10;
+    [SerializeField] protected int maxExp = 20;
 
-    [SerializeField] private int cryptidRemainMin = 10;
-    [SerializeField] private int cryptidRemainMax = 10;
+    [SerializeField] protected int cryptidRemainMin = 10;
+    [SerializeField] protected int cryptidRemainMax = 10;
 
     public int MinExp { get { return minExp; } }
     public int MaxExp { get { return maxExp; } }
@@ -27,24 +29,22 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
     public int Damage { get { return damage; } }
     [Header("Attacks")]
 
-    [SerializeField] private float attackSpeedPerSecond = 1;
+    [SerializeField] protected float attackSpeedPerSecond = 1;
     public float AttackSpeedPerSecond { get { return attackSpeedPerSecond; } }
 
-    [SerializeField] private float attackRadius;
+    [SerializeField] protected float attackRadius;
     public float AttackRadius { get { return attackRadius; } }
-    [SerializeField] private float movementSpeed = 5;
-    public float MovementSpeed { get { return movementSpeed; } }
-    private FSM fsm;
+    protected FSM fsm;
 
     #region misc
-    private Collider2D cryptidCollider;
-    private SpriteRenderer spriteRenderer;
+    protected Collider2D cryptidCollider;
+    protected SpriteRenderer spriteRenderer;
 
-    [SerializeField] private MusicClip chewingMusicClip;
-    [SerializeField] private MusicClip deathMusicClip;
+    [SerializeField] protected MusicClip chewingMusicClip;
+    [SerializeField] protected MusicClip deathMusicClip;
     #endregion
 
-    private void Awake()
+    protected virtual void Awake()
     {
         //set up the FSM
         SettingUpFSM();
@@ -99,7 +99,7 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
         fsm.Update();
     }
 
-    public void TakeDamage(int amountOfDamage)
+    public virtual void TakeDamage(int amountOfDamage)
     {
         health -= amountOfDamage;
         EventManager.Instance.TriggerEvent(TypeOfEvent.ShowDamagePopUp, (Vector2)transform.position, amountOfDamage);
@@ -117,7 +117,7 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
     }
 
     //start its death animation
-    private IEnumerator DeathCoroutine()
+    protected virtual IEnumerator DeathCoroutine()
     {
         deathMusicClip.source.Play();
         spriteRenderer.enabled = false;
@@ -125,10 +125,4 @@ public class CryptidBehaviour : MonoBehaviour , IDamageable
         yield return new WaitForSeconds(1.4f); //wait for the death animation ends
         Destroy(gameObject);
     }
-}
-
-public enum EnemyState
-{
-    move,
-    attack
 }

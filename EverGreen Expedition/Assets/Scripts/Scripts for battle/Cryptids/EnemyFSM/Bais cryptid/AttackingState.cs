@@ -17,7 +17,7 @@ namespace Assets.Scripts.EnemyFSM
 
         public override void Update()
         {
-            if(elapseTime < cryptidBehaviour.AttackSpeedPerSecond)
+            if(elapseTime < cryptid.AttackSpeedPerSecond)
             {
                 elapseTime += Time.deltaTime;
             }
@@ -36,10 +36,10 @@ namespace Assets.Scripts.EnemyFSM
 
         private void AttackObject()
         {
-            var hit = Physics2D.CircleCast(cryptidBehaviour.transform.position,
-                cryptidBehaviour.AttackRadius,
+            var hit = Physics2D.CircleCast(cryptid.transform.position,
+                cryptid.AttackRadius,
                 Vector2.zero,
-                cryptidBehaviour.AttackRadius ,
+                cryptid.AttackRadius ,
                 LayerMaskManager.TurretLayerMask
                 );
 
@@ -49,9 +49,9 @@ namespace Assets.Scripts.EnemyFSM
             }
             else
             {
-                cryptidBehaviour.PlayAttackSoundEffect();
+                cryptid.PlayAttackSoundEffect();
                 var componentToHit = hit.transform.GetComponent<IDamageable>();
-                componentToHit.TakeDamage(cryptidBehaviour.Damage);
+                componentToHit.TakeDamage(cryptid.Damage);
             }
         }
     }

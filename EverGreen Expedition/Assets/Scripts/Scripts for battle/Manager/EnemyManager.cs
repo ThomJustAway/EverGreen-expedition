@@ -243,7 +243,9 @@ public class EnemyManager : MonoBehaviour
         alert.SetActive(false);
         alertObjectPool.Enqueue(alert);//return back to the pool
 
-        var enemy = Instantiate(enemies[0] , enemyContainer);
+        var enemySelected = enemies[UnityEngine.Random.Range(0,enemies.Length)];
+
+        var enemy = Instantiate(enemySelected , enemyContainer);
         enemy.transform.localPosition= position;
     }
     #endregion
