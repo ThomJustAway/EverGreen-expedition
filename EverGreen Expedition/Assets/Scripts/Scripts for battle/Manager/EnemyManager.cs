@@ -81,7 +81,7 @@ public class EnemyManager : MonoBehaviour
         warningCanvas.PlayWarning();
         maxAmountOfEnemy = amountOfEnemiesToSpawn;
         bool doBurst = false;
-        while(progress > 0f)
+        while(amountOfEnemiesToSpawn > 0 )
         {
             doBurst = DecidingIfCanBurst();
 
@@ -110,7 +110,9 @@ public class EnemyManager : MonoBehaviour
                 float nextWaveTiming = UnityEngine.Random.Range(3.0f, 5.0f);
                 yield return new WaitForSeconds(nextWaveTiming);
             }
+            print(amountOfEnemiesToSpawn);
         }
+        print("coroutine stop");
     }
 
     private bool DecidingIfCanBurst()

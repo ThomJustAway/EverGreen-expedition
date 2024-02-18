@@ -78,6 +78,8 @@ namespace Assets.Scripts
         public void IncreaseWater(int water)
         {
             SoundManager.Instance.PlayAudio(SFXClip.WaterIncreaseing);
+
+            UIController.Instance.ShowAddWaterUIAnimation();
             waterResources += water;
         }
 
@@ -96,12 +98,22 @@ namespace Assets.Scripts
             if(waterResources >= waterCost && //if the player has more or equal to the water cost
                 currentLeafHandle >= leafHandleCost) //if the player has more or equal to the leaf handle cost
             {//buy that turret
+                UIController.Instance.ShowUseLeafHandleAnimation();
+                UIController.Instance.ShowUseWaterUIAnimation();
                 currentLeafHandle -= leafHandleCost;
                 waterResources -= waterCost;
                 return true;
             }
             else
             {
+                if(currentLeafHandle < leafHandleCost)
+                {
+                    UIController.Instance.ShowErrorLeafHandleAnimation();
+                }
+                if(waterResources < waterCost)
+                {
+                    UIController.Instance.ShowErrorWaterUI();
+                }
                 return false;
             }
         }
@@ -133,6 +145,7 @@ namespace Assets.Scripts
         #endregion
         public void RefundLeafHandle(int leafHandle)
         {
+            UIController.Instance.ShowAddLeafHandleAnimation();
             currentLeafHandle += leafHandle;
             if(currentLeafHandle > maxLeafHandle)
             {

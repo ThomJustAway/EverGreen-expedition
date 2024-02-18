@@ -500,15 +500,15 @@ RectTransform:
   m_GameObject: {fileID: 128468119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1661437476}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 271.6}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128468121
 MonoBehaviour:
@@ -2086,16 +2086,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 109
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 50
+    m_Right: 50
+    m_Top: 50
+    m_Bottom: 50
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -2523,6 +2523,7 @@ GameObject:
   - component: {fileID: 722160378}
   - component: {fileID: 722160377}
   - component: {fileID: 722160379}
+  - component: {fileID: 722160380}
   m_Layer: 5
   m_Name: Water
   m_TagString: Untagged
@@ -2539,8 +2540,8 @@ RectTransform:
   m_GameObject: {fileID: 722160375}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1778506073}
   - {fileID: 1211543087}
@@ -2549,8 +2550,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 680}
-  m_Pivot: {x: 0, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &722160377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,7 +2567,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 59
+    m_Top: 182
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 0
@@ -2615,6 +2616,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &722160380
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722160375}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a7db1f9fa2caa947bb9c0076252f6d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &729404556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2666,6 +2688,10 @@ PrefabInstance:
     - target: {fileID: 9175966436375737251, guid: 40c5cbee78db4924e9e5f83ce8fe798c, type: 3}
       propertyPath: m_Name
       value: Cryptid worm
+      objectReference: {fileID: 0}
+    - target: {fileID: 9175966436375737251, guid: 40c5cbee78db4924e9e5f83ce8fe798c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9195759498076692767, guid: 40c5cbee78db4924e9e5f83ce8fe798c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3504,7 +3530,7 @@ RectTransform:
   m_GameObject: {fileID: 1211543086}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.56, y: 3.5879998, z: 1.56}
+  m_LocalScale: {x: 3, y: 3, z: 4.68}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 722160376}
@@ -5582,7 +5608,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -5633,7 +5659,7 @@ RectTransform:
   m_GameObject: {fileID: 1578158583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.56, y: 3.5879998, z: 1.56}
+  m_LocalScale: {x: 3, y: 3, z: 4.68}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1661437476}
@@ -6336,6 +6362,7 @@ GameObject:
   - component: {fileID: 1661437478}
   - component: {fileID: 1661437477}
   - component: {fileID: 1661437479}
+  - component: {fileID: 1661437480}
   m_Layer: 5
   m_Name: Leaf handle
   m_TagString: Untagged
@@ -6350,10 +6377,10 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661437475}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 128468120}
   - {fileID: 1578158586}
@@ -6362,8 +6389,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 680}
-  m_Pivot: {x: 0, y: 0.5}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661437477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6379,7 +6406,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 79
+    m_Top: 182
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 0
@@ -6428,6 +6455,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1661437480
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661437475}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b11f5d6fbb1c3f43b60040018a07ed7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1737362954
 GameObject:
   m_ObjectHideFlags: 0
@@ -6461,7 +6509,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWaterResourcesText: {fileID: 1211543089}
+  playerWaterAnimator: {fileID: 722160380}
   playerLeafHandleResourcesText: {fileID: 1578158584}
+  playerLeafHandleAnimator: {fileID: 1661437480}
   healthPointText: {fileID: 586466536}
   healthBarRect: {fileID: 1523051943}
   turretContainer: {fileID: 1323562343}
@@ -6589,15 +6639,15 @@ RectTransform:
   m_GameObject: {fileID: 1778506072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 722160376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 150, y: 271.6}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1778506074
 MonoBehaviour:
@@ -7864,7 +7914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1989510112
 MonoBehaviour:
   m_ObjectHideFlags: 0

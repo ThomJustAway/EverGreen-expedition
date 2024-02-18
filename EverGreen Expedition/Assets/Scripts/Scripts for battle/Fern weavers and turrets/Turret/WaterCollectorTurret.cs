@@ -26,7 +26,7 @@ namespace Assets.Scripts
             if (healthpoint <= 0)
             {
                 healthpoint = 0;
-                EndCoroutine();
+                RemoveTurret();
                 FightingEventManager.Instance.RefundLeafHandle(leafHandleCost);
                 Destroy(gameObject);
             }

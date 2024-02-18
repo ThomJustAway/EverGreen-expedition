@@ -7,7 +7,9 @@ public class UIController : Patterns.Singleton<UIController>
 {
     // Start is called before the first frame update
     [SerializeField]private TextMeshProUGUI playerWaterResourcesText;
+    [SerializeField] private Animator playerWaterAnimator;
     [SerializeField] private TextMeshProUGUI playerLeafHandleResourcesText;
+    [SerializeField] private Animator playerLeafHandleAnimator;
 
     [SerializeField] private TextMeshProUGUI healthPointText;
     [SerializeField] private RectTransform healthBarRect;
@@ -79,8 +81,40 @@ public class UIController : Patterns.Singleton<UIController>
 
     private void UpdateWaterUI(int currentWater)
     {
-
         playerWaterResourcesText.text = currentWater.ToString();
+    }
+
+    #region add water animation
+    public void ShowAddWaterUIAnimation()
+    {
+        playerWaterAnimator.SetTrigger("add");
+    }
+
+    public void ShowErrorWaterUI()
+    {
+        playerWaterAnimator.SetTrigger("error");
+    }
+
+    public void ShowUseWaterUIAnimation()
+    {
+        playerWaterAnimator.SetTrigger("use");
+
+    }
+    #endregion
+
+    public void ShowAddLeafHandleAnimation()
+    {
+        playerLeafHandleAnimator.SetTrigger("Add");
+    }
+
+    public void ShowErrorLeafHandleAnimation()
+    {
+        playerLeafHandleAnimator.SetTrigger("Error");
+    }
+
+    public void ShowUseLeafHandleAnimation()
+    {
+        playerLeafHandleAnimator.SetTrigger("Use");
     }
 
     #region enemies 

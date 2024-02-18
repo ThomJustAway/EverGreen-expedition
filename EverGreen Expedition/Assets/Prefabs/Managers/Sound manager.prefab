@@ -105,7 +105,7 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 0.5
     pitch: 1.5
-  - sfx: 11
+  - sfx: 13
     clip: {fileID: 8300000, guid: 649f45a49911b3e45b0cb6e8de9f6839, type: 3}
     source: {fileID: 0}
     volume: 0.5
