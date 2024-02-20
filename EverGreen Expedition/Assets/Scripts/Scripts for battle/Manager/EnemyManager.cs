@@ -38,12 +38,12 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         progress = 1f;
-        DecideOnNumberOfEnemy();
+        int diffuclty = DecideOnNumberOfEnemy();
         EventManager.Instance.AddListener(TypeOfEvent.CryptidDeath, (Action<CryptidBehaviour>)CountEnemiesKilled);
 
         SettingUpVariables();
         UpdateUI();
-        StartCoroutine(StartEnemySpawning());
+        StartCoroutine(StartEnemySpawning(diffuclty));
     }
 
     private void Update()
@@ -51,30 +51,38 @@ public class EnemyManager : MonoBehaviour
         UpdateUI();
     }
 
-    private void DecideOnNumberOfEnemy()
+
+    //reutnr int to see how much coroutine needs to be spawn 
+    private int DecideOnNumberOfEnemy()
     {
+        int difficulty = 0;
         //this will calculate how many cryptid will spawn for each difficulty that increases
         int timePassed = GameManager.Instance.time;
         if ( timePassed >= (int)TimeDifficulty.Hard)
         {
             amountOfEnemiesToSpawn = 50 + 5 * ( timePassed - (int)TimeDifficulty.Hard );
+            difficulty = 4;
         }
         else if(timePassed>= (int)TimeDifficulty.Medium) 
         {
-            amountOfEnemiesToSpawn = 25 + 3 * (timePassed - (int)TimeDifficulty.Medium);
+            amountOfEnemiesToSpawn = 15 + 3 * (timePassed - (int)TimeDifficulty.Medium);
+            difficulty = 3;
         }
         else
         {
-            amountOfEnemiesToSpawn = 15 + timePassed;
+            amountOfEnemiesToSpawn = 5 + timePassed ;
+            difficulty = 1;
         }
         maxAmountOfEnemy = amountOfEnemiesToSpawn;
+
+        return difficulty;
     }
 
     #region Coroutine
 
 
     //do change this to make it more complex
-    private IEnumerator StartEnemySpawning()
+    private IEnumerator StartEnemySpawning(int difficulty)
     {
         yield return new WaitForSeconds(timeBeforeStartingWave);
 
@@ -83,36 +91,32 @@ public class EnemyManager : MonoBehaviour
         bool doBurst = false;
         while(amountOfEnemiesToSpawn > 0 )
         {
-            doBurst = DecidingIfCanBurst();
-
-            if (doBurst)
+            float nextWaveTiming = UnityEngine.Random.Range(3.0f, 5.0f);
+            for (int _ = 0; _ < difficulty; _++)
             {
-                int numberToBurst = UnityEngine.Random.Range(2, numberLimitToBurst);
-                amountOfEnemiesToSpawn -= numberToBurst;
-                progress = (float)amountOfEnemiesToSpawn / (float)maxAmountOfEnemy;
-                for(int i = 0; i < numberToBurst; i++)
+                doBurst = DecidingIfCanBurst();
+                if (doBurst)
                 {
+                    int numberToBurst = UnityEngine.Random.Range(2, numberLimitToBurst);
+                    amountOfEnemiesToSpawn -= numberToBurst;
+                    progress = (float)amountOfEnemiesToSpawn / (float)maxAmountOfEnemy;
+                    for(int i = 0; i < numberToBurst; i++)
+                    {
+                        SpawnEnemy();
+                    }
+                }
+                else
+                {
+                    amountOfEnemiesToSpawn -= 1;
+                    progress = (float)amountOfEnemiesToSpawn / (float)maxAmountOfEnemy;
+                    //deciding on burst
                     SpawnEnemy();
                 }
-
-                float nextWaveTiming = UnityEngine.Random.Range(3.0f, 5.0f);
-                yield return new WaitForSeconds(nextWaveTiming);
-
             }
-            else
-            {
-                amountOfEnemiesToSpawn -= 1;
-                progress = (float)amountOfEnemiesToSpawn / (float)maxAmountOfEnemy;
-                //deciding on burst
+            yield return new WaitForSeconds(nextWaveTiming);
 
-                SpawnEnemy();
 
-                float nextWaveTiming = UnityEngine.Random.Range(3.0f, 5.0f);
-                yield return new WaitForSeconds(nextWaveTiming);
-            }
-            print(amountOfEnemiesToSpawn);
         }
-        print("coroutine stop");
     }
 
     private bool DecidingIfCanBurst()

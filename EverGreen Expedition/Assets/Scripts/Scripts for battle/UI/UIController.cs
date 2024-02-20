@@ -6,11 +6,16 @@ using UnityEngine;
 public class UIController : Patterns.Singleton<UIController>
 {
     // Start is called before the first frame update
+
+    [SerializeField] private TextMeshProUGUI fernWeaverName;
+
+    [Header("Resources")]
     [SerializeField]private TextMeshProUGUI playerWaterResourcesText;
     [SerializeField] private Animator playerWaterAnimator;
     [SerializeField] private TextMeshProUGUI playerLeafHandleResourcesText;
     [SerializeField] private Animator playerLeafHandleAnimator;
 
+    [Header("HP")]
     [SerializeField] private TextMeshProUGUI healthPointText;
     [SerializeField] private RectTransform healthBarRect;
     private float healthBarWidth;
@@ -35,6 +40,7 @@ public class UIController : Patterns.Singleton<UIController>
 
     private void Start()
     {
+        fernWeaverName.text = "<b>Selected:</b> "+ GameManager.Instance.playerStats.name;
         healthBarWidth = healthBarRect.rect.width;
         waveWidthWave = waveProgress.rect.width;
         SetUpTurretCard();

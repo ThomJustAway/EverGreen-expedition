@@ -198,22 +198,30 @@ PrefabInstance:
     - target: {fileID: 2960572653441530466, guid: 069d7998f33702441958da3ec6e033e6, type: 3}
       propertyPath: testingStats.fernWeaverSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9f9e39f9b49d13048947cdac57aaa2af, type: 3}
+      objectReference: {fileID: 21300000, guid: aa51d1a611c2b8b4fb06811dfc055ebf, type: 3}
     - target: {fileID: 2960572653441530466, guid: 069d7998f33702441958da3ec6e033e6, type: 3}
       propertyPath: testingStats.turrets.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2960572653441530466, guid: 069d7998f33702441958da3ec6e033e6, type: 3}
       propertyPath: testingStats.turrets.Array.data[0]
       value: 
       objectReference: {fileID: 7330323958132423449, guid: 3aaaaf993a5864a44a361242ca3c8158, type: 3}
+    - target: {fileID: 2960572653441530466, guid: 069d7998f33702441958da3ec6e033e6, type: 3}
+      propertyPath: testingStats.turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 5251817526851731141, guid: dfe8cf52c80b16a47a9173e6a8f025aa, type: 3}
+    - target: {fileID: 2960572653441530466, guid: 069d7998f33702441958da3ec6e033e6, type: 3}
+      propertyPath: testingStats.turrets.Array.data[2]
+      value: 
+      objectReference: {fileID: 163170267138469760, guid: 7df02d4e03c80094da33d441b77b30ad, type: 3}
     - target: {fileID: 6308295760849215390, guid: 069d7998f33702441958da3ec6e033e6, type: 3}
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
     - target: {fileID: 6308295760849215390, guid: 069d7998f33702441958da3ec6e033e6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2323,87 +2331,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7392554551730106493, guid: 0382815890d15e14d81de8f0ea52b370, type: 3}
   m_PrefabInstance: {fileID: 997799079}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1004893466
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 72201271585850488, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_Name
-      value: Sound manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850488, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: musicClips.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: musicClips.Array.data[5].sfx
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: musicClips.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: cd918da67b7e4264e9074dca8f22a7dd, type: 3}
-    - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: musicClips.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 09c3897cf78e3154bb4b7488a4012408, type: 3}
-    - target: {fileID: 72201271585850489, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: musicClips.Array.data[5].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 982.58563
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 494.34283
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -17.440569
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
 --- !u!1 &1020569758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,11 +2782,11 @@ MonoBehaviour:
     message: "<b>Tip:</b> \nTry and utalise the time and grow your power before more
       cryptids come!"
     color: {r: 0.3372549, g: 0.72156864, b: 0.2784314, a: 1}
-  - difficulty: 15
+  - difficulty: 25
     message: "<b>Tip:</b> \nBecareful of time! There will be a large number of cryptid
       that will come!"
     color: {r: 1, g: 0.6117647, b: 0, a: 1}
-  - difficulty: 25
+  - difficulty: 40
     message: "<b>Tip:</b> \nQuickly grow your strength as the mother cryptid know
       where you are!"
     color: {r: 1, g: 0, b: 0, a: 1}
@@ -4354,6 +4281,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756960133}
   m_CullTransparentMesh: 1
+--- !u!1001 &1806899926
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 72201271585850488, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_Name
+      value: Sound manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 982.58563
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 494.34283
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.440569
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 72201271585850490, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bdb5b930d9415794682d6f61dd6a7d3b, type: 3}
 --- !u!1 &1866821804
 GameObject:
   m_ObjectHideFlags: 0
@@ -5233,4 +5217,4 @@ SceneRoots:
   - {fileID: 1108077485}
   - {fileID: 55131504}
   - {fileID: 27494169}
-  - {fileID: 1004893466}
+  - {fileID: 1806899926}

@@ -1035,7 +1035,7 @@ MonoBehaviour:
     - {fileID: 7330323958132423449, guid: 3aaaaf993a5864a44a361242ca3c8158, type: 3}
     - {fileID: 5251817526851731141, guid: dfe8cf52c80b16a47a9173e6a8f025aa, type: 3}
     fernWeaverSprite: {fileID: 21300000, guid: b18522f4bd06fe34ea78f30ff9cc6f16, type: 3}
-    waterPerSecond: 3
+    waterPerSecond: 9
     cryptidRemain: 0
   characterProfile: {fileID: 1333132117}
   nameText: {fileID: 1980508444}
@@ -1307,7 +1307,7 @@ MonoBehaviour:
     - {fileID: 7330323958132423449, guid: 3aaaaf993a5864a44a361242ca3c8158, type: 3}
     - {fileID: 5251817526851731141, guid: dfe8cf52c80b16a47a9173e6a8f025aa, type: 3}
     fernWeaverSprite: {fileID: 21300000, guid: aa51d1a611c2b8b4fb06811dfc055ebf, type: 3}
-    waterPerSecond: 5
+    waterPerSecond: 9
     cryptidRemain: 0
   characterProfile: {fileID: 1180480195}
   nameText: {fileID: 741258387}
@@ -1374,7 +1374,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 800408570}
+      - m_Target: {fileID: 861504049}
         m_TargetAssemblyTypeName: selectingCharacterButton, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1

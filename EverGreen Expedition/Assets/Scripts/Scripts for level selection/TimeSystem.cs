@@ -121,14 +121,22 @@ namespace Assets.Scripts.Scripts_for_level_selection
 
         }
         #endregion
+
+        private void AddTime()
+        {
+            GameManager.Instance.AddTimeForDebug();
+            EventManager.Instance.TriggerEvent(TypeOfEvent.ReloadUI);
+        }
+
+     
     }
 
     public enum TimeDifficulty
     {
         None,
         Easy ,
-        Medium = 15,
-        Hard =25
+        Medium = 25,
+        Hard = 40
     }
 
 }

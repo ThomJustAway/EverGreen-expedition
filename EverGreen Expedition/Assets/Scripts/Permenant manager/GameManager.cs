@@ -12,7 +12,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
     [SerializeField] private bool testing;
     [SerializeField] private PlayerCurrentFernWeaverStats testingStats;
 
-    public PlayerCurrentFernWeaverStats playerStats { get; private set; }
+    public PlayerCurrentFernWeaverStats playerStats; /*{ get; private set; }*/
     #region level selection
     public int time { get; private set; }
     public int NodeIdCurrently { get; private set; }
@@ -69,6 +69,11 @@ public class GameManager : SingletonDontDestroy<GameManager>
         }
         
         NodeIdCurrently = NodeTravelling; //now the player is now at this node
+    }
+
+    public void AddTimeForDebug()
+    {
+        time += 10;
     }
 
     //when player click the continue button after they win.
